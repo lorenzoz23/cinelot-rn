@@ -1,7 +1,6 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { REACT_NATIVE_TMDB_API_KEY } from "@env";
 import { RootStackParamList } from "../types/types";
 
 export default function NotFoundScreen({
@@ -15,7 +14,6 @@ export default function NotFoundScreen({
         style={styles.link}
       >
         <Text style={styles.linkText}>Go to home screen!</Text>
-        <Text>{REACT_NATIVE_TMDB_API_KEY}</Text>
       </TouchableOpacity>
     </View>
   );
