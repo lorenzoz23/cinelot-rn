@@ -2,8 +2,14 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { View } from "./Themed";
 import { MonoText as Text } from "../components/StyledText";
+import { Movie } from "../types/Movie";
 
-const MovieCard = () => {
+interface MovieCardProps {
+  data: Movie;
+}
+
+const MovieCard = (props: MovieCardProps) => {
+  const { data } = props;
   return (
     <View
       style={{
@@ -51,7 +57,7 @@ const MovieCard = () => {
                 textAlign: "center",
               }}
             >
-              Her (2013)
+              {data.name} ({data.year})
             </Text>
           </View>
         </View>
