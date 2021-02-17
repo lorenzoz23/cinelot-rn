@@ -1,28 +1,58 @@
-{
-  "name": "Her",
-  "year": "2013",
-  "rating": "R",
-  "genre": [
-    {
-      "id": 10749,
-      "name": "Romance"
-    },
-    {
-      "id": 878,
-      "name": "Science Fiction"
-    },
-    {
-      "id": 18,
-      "name": "Drama"
-    }
-  ],
-  "runtime": "126",
-  "plot": "In the not so distant future, Theodore, a lonely writer purchases a newly developed operating system designed to meet the user's every needs. To Theodore's surprise, a romantic relationship develops between him and his operating system. This unconventional love story blends science fiction and romance in a sweet tale that explores the nature of love and the ways that technology isolates and connects us all.",
-  "poster": "/yk4J4aewWYNiBhD49WD7UaBBn37.jpg",
-  "images": ["/yk4J4aewWYNiBhD49WD7UaBBn37.jpg"],
-  "id": 152601,
-  "imdbId": "tt1798709",
-  "starRating": -1,
-  "watched": true,
-  "mediaTags": [{ "name": "blu-ray" }]
-}
+[
+  {
+    "name": "Her",
+    "year": "2013",
+    "rating": "R",
+    "genre": [
+      {
+        "id": 10749,
+        "name": "Romance"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "runtime": "126",
+    "plot": "In the not so distant future, Theodore, a lonely writer purchases a newly developed operating system designed to meet the user's every needs. To Theodore's surprise, a romantic relationship develops between him and his operating system. This unconventional love story blends science fiction and romance in a sweet tale that explores the nature of love and the ways that technology isolates and connects us all.",
+    "poster": "/yk4J4aewWYNiBhD49WD7UaBBn37.jpg",
+    "images": ["/yk4J4aewWYNiBhD49WD7UaBBn37.jpg"],
+    "id": 152601,
+    "imdbId": "tt1798709",
+    "starRating": -1,
+    "watched": true,
+    "mediaTags": [{ "name": "blu-ray" }]
+  },
+  {
+    "name": "The Thing",
+    "year": "1982",
+    "rating": "R",
+    "genre": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      },
+      {
+        "id": 878,
+        "name": "Science Fiction"
+      }
+    ],
+    "runtime": "109",
+    "plot": "Members of an American scientific research outpost in Antarctica find themselves battling a parasitic alien organism capable of perfectly imitating its victims. They soon discover that this task will be harder than they thought, as they don't know which members of the team have already been assimilated and their paranoia threatens to tear them apart.",
+    "poster": "/tzGY49kseSE9QAKk47uuDGwnSCu.jpg",
+    "images": ["/tzGY49kseSE9QAKk47uuDGwnSCu.jpg"],
+    "id": 1091,
+    "imdbId": "tt0084787",
+    "starRating": -1,
+    "watched": true,
+    "mediaTags": [{ "name": "blu-ray" }]
+  }
+]

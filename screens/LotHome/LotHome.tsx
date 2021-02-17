@@ -1,14 +1,14 @@
 import * as React from "react";
 import { SafeAreaView, ScrollView, StyleSheet, View } from "react-native";
 import MovieCard from "../../components/MovieCard";
-import { mockMovieCollection } from "../../mocks/MovieCollection";
+import { mockLotCollection } from "../../mocks/MovieCollection";
 import { Movie } from "../../types/Movie";
 
 const LotHome = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={{ width: "100%", paddingVertical: 10 }}>
-        {mockMovieCollection.map(
+        {mockLotCollection.map(
           (x, i) =>
             i % 3 === 0 && (
               <View
@@ -20,7 +20,7 @@ const LotHome = () => {
                   width: "100%",
                 }}
               >
-                {mockMovieCollection.map(
+                {mockLotCollection.map(
                   (movie, j) =>
                     j < 4 && (
                       <View style={{ marginRight: 10 }}>

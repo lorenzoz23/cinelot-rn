@@ -24,6 +24,7 @@ const MovieCard = (props: MovieCardProps) => {
           source={{
             uri:
               "https://images-na.ssl-images-amazon.com/images/I/41Eb7WxmYNL._AC_.jpg",
+            //"https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
           }}
           style={{
             width: 90,
