@@ -2,8 +2,14 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, Image } from "react-native";
 import { View } from "./Themed";
 import { MonoText as Text } from "../components/StyledText";
+import { Movie } from "../types/Movie";
 
-const MovieCard = () => {
+interface MovieCardProps {
+  data: Movie;
+}
+
+const MovieCard = (props: MovieCardProps) => {
+  const { data } = props;
   return (
     <View
       style={{
@@ -18,6 +24,7 @@ const MovieCard = () => {
           source={{
             uri:
               "https://images-na.ssl-images-amazon.com/images/I/41Eb7WxmYNL._AC_.jpg",
+            //"https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
           }}
           style={{
             width: 90,
@@ -51,7 +58,7 @@ const MovieCard = () => {
                 textAlign: "center",
               }}
             >
-              Her (2013)
+              {data.name} ({data.year})
             </Text>
           </View>
         </View>
