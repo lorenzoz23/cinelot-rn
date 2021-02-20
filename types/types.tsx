@@ -9,10 +9,14 @@ export type BottomTabParamList = {
   Settings: undefined;
 };
 
-export type TabOneParamList = {
+export type HomeParamList = {
   HomeScreen: undefined;
 };
 
-export type TabTwoParamList = {
+export type SearchParamList = {
   SearchScreen: undefined;
+};
+
+export type SettingsParamList = {
+  NotFound: undefined;
 };

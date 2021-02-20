@@ -22,9 +22,7 @@ const MovieCard = (props: MovieCardProps) => {
       <TouchableOpacity>
         <Image
           source={{
-            uri:
-              "https://images-na.ssl-images-amazon.com/images/I/41Eb7WxmYNL._AC_.jpg",
-            //"https://m.media-amazon.com/images/M/MV5BNGViZWZmM2EtNGYzZi00ZDAyLTk3ODMtNzIyZTBjN2Y1NmM1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_.jpg",
+            uri: data.poster,
           }}
           style={{
             width: 90,
@@ -32,36 +30,6 @@ const MovieCard = (props: MovieCardProps) => {
             borderRadius: 10,
           }}
         />
-        <View
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "transparent",
-            width: "100%",
-            marginVertical: 5,
-          }}
-        >
-          <View
-            style={{
-              backgroundColor: "#2E4053",
-              borderRadius: 10,
-              padding: 5,
-              width: "100%",
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 12,
-                color: "#5DADE2",
-                fontWeight: "bold",
-                textAlign: "center",
-              }}
-            >
-              {data.name} ({data.year})
-            </Text>
-          </View>
-        </View>
       </TouchableOpacity>
     </View>
   );
