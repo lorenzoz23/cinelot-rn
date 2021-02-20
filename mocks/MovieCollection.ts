@@ -1,4 +1,4 @@
-import mockMovie from "./Movie.json";
+import mockMovie from "./Movies.json";
 
 export const mockLotCollection = [
   mockMovie[0],

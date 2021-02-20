@@ -39,10 +39,6 @@ const LotHome = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-    width: "100%",
-    height: "100%",
   },
 });
 
