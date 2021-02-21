@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
+import React, { useState } from "react";
 import { Alert, TouchableOpacity } from "react-native";
 import NavBar from "../components/NavBar";
 import Colors from "../constants/Colors";
@@ -17,6 +17,7 @@ import {
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
 import { MaterialIcons } from "@expo/vector-icons";
+import Modal from "../components/Modal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -64,6 +65,7 @@ export default BottomTabNavigator;
 
 const HomeStack = createStackNavigator<HomeParamList>();
 const HomeNavigator = () => {
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
@@ -74,26 +76,7 @@ const HomeNavigator = () => {
               title="Cinelot"
               {...optionProps}
               rightElement={
-                <TouchableOpacity
-                  onPress={() =>
-                    Alert.alert(
-                      "Filter your collection!",
-                      "Press OK to filter your collection",
-                      [
-                        {
-                          text: "Cancel",
-                          onPress: () => console.log("Cancel Pressed"),
-                          style: "cancel",
-                        },
-                        {
-                          text: "OK",
-                          onPress: () => console.log("OK Pressed"),
-                        },
-                      ],
-                      { cancelable: false }
-                    )
-                  }
-                >
+                <TouchableOpacity onPress={() => setIsVisible(true)}>
                   <MaterialIcons
                     name="filter-list"
                     color="white"
@@ -129,7 +112,12 @@ const HomeNavigator = () => {
           ),
         })}
       >
-        {() => <HomeScreen />}
+        {() => (
+          <>
+            <HomeScreen />
+            {isVisible && <Modal handleClose={() => setIsVisible(false)} />}
+          </>
+        )}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
