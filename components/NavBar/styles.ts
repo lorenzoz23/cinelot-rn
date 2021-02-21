@@ -6,18 +6,18 @@ export const NavBarStyles = StyleSheet.create({
     alignItems: "center",
   },
   left: {
-    paddingLeft: 15,
+    paddingLeft: 10,
     alignItems: "flex-start",
     height: "100%",
     justifyContent: "center",
-    width: "20%",
+    width: "25%",
   },
   right: {
-    paddingRight: 15,
+    paddingRight: 10,
     alignItems: "flex-end",
     height: "100%",
     justifyContent: "center",
-    width: "20%",
+    width: "25%",
   },
   middle: {
     flexDirection: "column",
@@ -25,7 +25,9 @@ export const NavBarStyles = StyleSheet.create({
     alignItems: "center",
   },
   headerContent: {
-    width: "60%",
+    width: "50%",
+    borderRadius: 50,
+    backgroundColor: "#283747",
   },
   headerContentTitle: {
     textAlign: "center",

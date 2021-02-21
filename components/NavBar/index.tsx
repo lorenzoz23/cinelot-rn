@@ -26,17 +26,18 @@ const NavBar = (props: NavBarBaseProps) => {
       <View style={{ ...NavBarStyles.left, ...NavBarStyles.text }}>
         {leftElement}
       </View>
-      <Animated.Text
-        numberOfLines={1}
-        ellipsizeMode="tail"
-        style={{
-          ...NavBarStyles.headerContentTitle,
-          ...NavBarStyles.headerContent,
-          opacity: fader,
-        }}
-      >
-        {title}
-      </Animated.Text>
+      <View style={NavBarStyles.headerContent}>
+        <Animated.Text
+          numberOfLines={1}
+          ellipsizeMode="tail"
+          style={{
+            ...NavBarStyles.headerContentTitle,
+            opacity: fader,
+          }}
+        >
+          {title}
+        </Animated.Text>
+      </View>
       <View style={{ ...NavBarStyles.right, ...NavBarStyles.text }}>
         {rightElement}
       </View>
