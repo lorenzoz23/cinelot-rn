@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import * as React from "react";
+import React from "react";
+import { Alert, TouchableOpacity } from "react-native";
 import NavBar from "../components/NavBar";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -73,20 +74,56 @@ const HomeNavigator = () => {
               title="Cinelot"
               {...optionProps}
               rightElement={
-                <MaterialIcons
-                  name="filter-list"
-                  color="white"
-                  size={30}
-                  style={{ marginBottom: -3 }}
-                />
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert(
+                      "Filter your collection!",
+                      "Press OK to filter your collection",
+                      [
+                        {
+                          text: "Cancel",
+                          onPress: () => console.log("Cancel Pressed"),
+                          style: "cancel",
+                        },
+                        {
+                          text: "OK",
+                          onPress: () => console.log("OK Pressed"),
+                        },
+                      ],
+                      { cancelable: false }
+                    )
+                  }
+                >
+                  <MaterialIcons
+                    name="filter-list"
+                    color="white"
+                    size={30}
+                    style={{ marginBottom: -3 }}
+                  />
+                </TouchableOpacity>
               }
               leftElement={
-                <Text
-                  style={{ color: "white", fontSize: 15 }}
-                  ellipsizeMode="tail"
+                <TouchableOpacity
+                  onPress={() =>
+                    Alert.alert(
+                      "You have 16 films in your collection!",
+                      "",
+                      [
+                        {
+                          text: "Sick!",
+                        },
+                      ],
+                      { cancelable: false }
+                    )
+                  }
                 >
-                  16 films
-                </Text>
+                  <Text
+                    style={{ color: "white", fontSize: 15 }}
+                    ellipsizeMode="tail"
+                  >
+                    16 films
+                  </Text>
+                </TouchableOpacity>
               }
             />
           ),

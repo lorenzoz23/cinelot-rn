@@ -1,5 +1,6 @@
 import React from "react";
 import { SegmentedControl, Segment } from "react-native-resegmented-control";
+import { SegControlStyles } from "./styles";
 
 interface SegControlProps {
   onChange: (name: string) => void;
@@ -13,10 +14,8 @@ const SegControl = (props: SegControlProps) => {
       activeTintColor="#3498DB"
       inactiveTintColor="white"
       initialSelectedName={selected}
-      onChangeValue={(name: string) => {
-        onChange(name);
-      }}
-      style={{ width: "100%", backgroundColor: "#3498DB" }}
+      onChangeValue={onChange}
+      style={{ ...SegControlStyles.container, ...SegControlStyles.segment }}
     >
       <Segment name="lot" content="Your Lot" />
       <Segment name="wishlist" content="Your Wishlist" />
