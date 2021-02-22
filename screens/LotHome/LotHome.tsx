@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
@@ -15,44 +16,30 @@ import {
 } from "../../mocks/MovieCollection";
 import { Movie } from "../../types/Movie";
 
-const emptyCollection = [
-  {
-    name: "",
-    year: "",
-    rating: "",
-    genre: [
-      {
-        id: -1,
-        name: "",
-      },
-      {
-        id: -1,
-        name: "",
-      },
-      {
-        id: -1,
-        name: "",
-      },
-    ],
-    runtime: "",
-    plot: "",
-    poster: "",
-    images: [],
-    id: -1,
-    imdbId: "",
-    starRating: -1,
-    watched: false,
-    mediaTags: [{ name: "" }],
-  },
-];
+export const defaultSelectedMovie: Movie = {
+  name: "",
+  year: "",
+  rating: "",
+  genre: [""],
+  runtime: "",
+  plot: "",
+  poster: "",
+  images: [""],
+  id: -1,
+  imdbId: "",
+  starRating: -1,
+  watched: false,
+  mediaTags: [],
+};
 
-const LotHome = () => {
+const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   const [segState, setSegState] = useState("lot");
   const [phoneWidth, setPhoneWidth] = useState(Dimensions.get("screen").width);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(
     mockLotCollection
   );
+  const [selectedMovie, setSelectedMovie] = useState(defaultSelectedMovie);
   //const flatListRef = useRef();
 
   const onPhoneWidthChange = ({
@@ -71,11 +58,20 @@ const LotHome = () => {
   }, []);
 
   useEffect(() => {
+    if (!route.params?.selectedMovie) setSelectedMovie(defaultSelectedMovie);
+  }, [route.params]);
+
+  useEffect(() => {
     let updatedCollection = [...selectedCollection];
     updatedCollection =
       segState === "lot" ? mockLotCollection : mockWishlistCollection;
     setSelectedCollection(updatedCollection);
   }, [segState]);
+
+  useEffect(() => {
+    if (selectedMovie.id > 0)
+      navigation.navigate("MovieDetailsScreen", { movieData: selectedMovie });
+  }, [selectedMovie]);
 
   const handleRefresh = () => {
     setRefreshing(true);
@@ -96,7 +92,7 @@ const LotHome = () => {
         data={selectedCollection}
         renderItem={({ item }) => (
           <View style={{ marginRight: 10, marginBottom: 10 }} key={item.id}>
-            <MovieCard data={item as Movie} />
+            <MovieCard data={item as Movie} showMovie={setSelectedMovie} />
           </View>
         )}
         //keyExtractor={(item) => String(item.id)}

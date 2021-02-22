@@ -5,13 +5,14 @@ import { MovieCardStyles } from "./styles";
 
 interface MovieCardProps {
   data: Movie;
+  showMovie: (movie: Movie) => void;
 }
 
 const MovieCard = (props: MovieCardProps) => {
-  const { data } = props;
+  const { data, showMovie } = props;
   return (
     <View style={MovieCardStyles.container}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => showMovie(data)}>
         <Image
           source={{
             uri: data.poster,

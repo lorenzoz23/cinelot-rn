@@ -16,8 +16,9 @@ import {
 } from "../types/types";
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import Modal from "../components/Modal";
+import MovieDetailsScreen from "../screens/MovieDetails";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -65,9 +66,9 @@ export default BottomTabNavigator;
 
 const HomeStack = createStackNavigator<HomeParamList>();
 const HomeNavigator = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator initialRouteName="HomeScreen">
       <HomeStack.Screen
         name="HomeScreen"
         options={(optionProps) => ({
@@ -76,7 +77,7 @@ const HomeNavigator = () => {
               title="Cinelot"
               {...optionProps}
               rightElement={
-                <TouchableOpacity onPress={() => setIsVisible(true)}>
+                <TouchableOpacity onPress={() => setIsModalVisible(true)}>
                   <MaterialIcons
                     name="filter-list"
                     color="white"
@@ -104,7 +105,7 @@ const HomeNavigator = () => {
                     style={{ color: "white", fontSize: 15 }}
                     ellipsizeMode="tail"
                   >
-                    16 films
+                    7 films
                   </Text>
                 </TouchableOpacity>
               }
@@ -112,13 +113,23 @@ const HomeNavigator = () => {
           ),
         })}
       >
-        {() => (
+        {(props) => (
           <>
-            <HomeScreen />
-            {isVisible && <Modal handleClose={() => setIsVisible(false)} />}
+            <HomeScreen {...props} />
+            {isModalVisible && (
+              <Modal handleClose={() => setIsModalVisible(false)} />
+            )}
           </>
         )}
       </HomeStack.Screen>
+      <HomeStack.Screen
+        name="MovieDetailsScreen"
+        component={MovieDetailsScreen}
+        options={() => ({
+          headerTransparent: true,
+          headerShown: false,
+        })}
+      />
     </HomeStack.Navigator>
   );
 };
