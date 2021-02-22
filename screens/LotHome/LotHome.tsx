@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
@@ -31,6 +31,9 @@ export const defaultSelectedMovie: Movie = {
   watched: false,
   mediaTags: [],
 };
+
+const lotGradients = ["#3F5EFB", "#4d6bff", "#FC466B"];
+const wishlistGradients = ["#00C9FF", "#00C9FF", "#92FE9D"];
 
 const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   const [segState, setSegState] = useState("lot");
@@ -84,23 +87,44 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.segContainer}>
-        <SegControl onChange={setSegState} selected={segState} />
-      </View>
-      <FlatList
-        //ref={flatListRef} // extract flatlist to own component
-        data={selectedCollection}
-        renderItem={({ item }) => (
-          <View style={{ marginRight: 10, marginBottom: 10 }} key={item.id}>
-            <MovieCard data={item as Movie} showMovie={setSelectedMovie} />
-          </View>
-        )}
-        //keyExtractor={(item) => String(item.id)}
-        numColumns={4} // add screen size logic here
-        directionalLockEnabled
-        onRefresh={handleRefresh}
-        refreshing={refreshing}
-      />
+      <LinearGradient
+        colors={segState === "lot" ? lotGradients : wishlistGradients}
+        style={{
+          flex: 1,
+          width: phoneWidth,
+          alignItems: "flex-start",
+        }}
+      >
+        <View style={styles.segContainer}>
+          <SegControl onChange={setSegState} selected={segState} />
+        </View>
+        <FlatList
+          //ref={flatListRef} // extract flatlist to own component
+          data={selectedCollection}
+          renderItem={({ item }) => (
+            <View
+              style={{
+                marginRight: 10,
+                marginBottom: 10,
+              }}
+              key={item.id}
+            >
+              <MovieCard data={item as Movie} showMovie={setSelectedMovie} />
+            </View>
+          )}
+          //keyExtractor={(item) => String(item.id)}
+          numColumns={4} // add screen size logic here
+          directionalLockEnabled
+          onRefresh={handleRefresh}
+          refreshing={refreshing}
+          horizontal={false}
+          style={{
+            paddingLeft: 10,
+
+            paddingBottom: 10,
+          }}
+        />
+      </LinearGradient>
     </SafeAreaView>
   );
 };
@@ -108,8 +132,6 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginHorizontal: 15,
-    alignItems: "center",
   },
   segContainer: {
     marginHorizontal: 50,
