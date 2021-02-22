@@ -4,10 +4,11 @@ export const MovieCardStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "transparent",
+    borderColor: "#34495E",
   },
   image: {
-    borderRadius: 10,
     width: 95,
     height: 145,
+    borderRadius: 10,
   },
 });

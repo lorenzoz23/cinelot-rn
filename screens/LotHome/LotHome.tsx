@@ -34,6 +34,7 @@ export const defaultSelectedMovie: Movie = {
 
 const lotGradients = ["#3F5EFB", "#4d6bff", "#FC466B"];
 const wishlistGradients = ["#00C9FF", "#00C9FF", "#92FE9D"];
+const solidGradient = ["black", "black"];
 
 const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   const [segState, setSegState] = useState("lot");
@@ -88,7 +89,7 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={segState === "lot" ? lotGradients : wishlistGradients}
+        colors={solidGradient} //{segState === "lot" ? lotGradients : wishlistGradients}
         style={{
           flex: 1,
           width: phoneWidth,
@@ -120,8 +121,8 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
           horizontal={false}
           style={{
             paddingLeft: 10,
-
             paddingBottom: 10,
+            //backgroundColor: "white",
           }}
         />
       </LinearGradient>
