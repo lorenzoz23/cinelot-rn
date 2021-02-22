@@ -29,7 +29,9 @@ const BottomTabNavigator = () => {
       initialRouteName="Home"
       tabBarOptions={{
         activeTintColor: Colors[colorScheme].tint,
+        inactiveTintColor: "black",
         showLabel: false,
+        style: { backgroundColor: "#C39BD3" },
       }}
     >
       <BottomTab.Screen
@@ -65,9 +67,9 @@ export default BottomTabNavigator;
 
 const HomeStack = createStackNavigator<HomeParamList>();
 const HomeNavigator = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator initialRouteName="HomeScreen">
       <HomeStack.Screen
         name="HomeScreen"
         options={(optionProps) => ({
@@ -76,13 +78,8 @@ const HomeNavigator = () => {
               title="Cinelot"
               {...optionProps}
               rightElement={
-                <TouchableOpacity onPress={() => setIsVisible(true)}>
-                  <MaterialIcons
-                    name="filter-list"
-                    color="white"
-                    size={30}
-                    style={{ marginBottom: -3 }}
-                  />
+                <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+                  <MaterialIcons name="filter-list" color="white" size={30} />
                 </TouchableOpacity>
               }
               leftElement={
@@ -104,7 +101,7 @@ const HomeNavigator = () => {
                     style={{ color: "white", fontSize: 15 }}
                     ellipsizeMode="tail"
                   >
-                    16 films
+                    7 films
                   </Text>
                 </TouchableOpacity>
               }
@@ -112,10 +109,12 @@ const HomeNavigator = () => {
           ),
         })}
       >
-        {() => (
+        {(props) => (
           <>
-            <HomeScreen />
-            {isVisible && <Modal handleClose={() => setIsVisible(false)} />}
+            <HomeScreen {...props} />
+            {isModalVisible && (
+              <Modal handleClose={() => setIsModalVisible(false)} />
+            )}
           </>
         )}
       </HomeStack.Screen>

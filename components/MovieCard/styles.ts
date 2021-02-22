@@ -3,11 +3,12 @@ import { StyleSheet } from "react-native";
 export const MovieCardStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "transparent",
+    backgroundColor: "#34495E",
+    borderRadius: 10,
   },
   image: {
+    width: 95,
+    height: 145,
     borderRadius: 10,
-    width: 90,
-    height: 135,
   },
 });
