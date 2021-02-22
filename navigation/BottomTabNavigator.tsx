@@ -16,9 +16,8 @@ import {
 } from "../types/types";
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
-import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import Modal from "../components/Modal";
-import MovieDetailsScreen from "../screens/MovieDetails";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -30,7 +29,9 @@ const BottomTabNavigator = () => {
       initialRouteName="Home"
       tabBarOptions={{
         activeTintColor: Colors[colorScheme].tint,
+        inactiveTintColor: "black",
         showLabel: false,
+        style: { backgroundColor: "#C39BD3" },
       }}
     >
       <BottomTab.Screen
@@ -78,12 +79,7 @@ const HomeNavigator = () => {
               {...optionProps}
               rightElement={
                 <TouchableOpacity onPress={() => setIsModalVisible(true)}>
-                  <MaterialIcons
-                    name="filter-list"
-                    color="white"
-                    size={30}
-                    style={{ marginBottom: -3 }}
-                  />
+                  <MaterialIcons name="filter-list" color="white" size={30} />
                 </TouchableOpacity>
               }
               leftElement={
@@ -122,14 +118,6 @@ const HomeNavigator = () => {
           </>
         )}
       </HomeStack.Screen>
-      <HomeStack.Screen
-        name="MovieDetailsScreen"
-        component={MovieDetailsScreen}
-        options={() => ({
-          headerTransparent: true,
-          headerShown: false,
-        })}
-      />
     </HomeStack.Navigator>
   );
 };

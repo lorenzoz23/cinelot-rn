@@ -15,6 +15,8 @@ export const MovieDetailsStyles = StyleSheet.create({
     opacity: 0.8,
     padding: 5,
     paddingHorizontal: 15,
+    paddingTop: 45,
+    paddingBottom: 30,
   },
   nameHeader: {
     fontSize: 35,

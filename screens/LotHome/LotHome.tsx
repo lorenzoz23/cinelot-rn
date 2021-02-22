@@ -32,8 +32,8 @@ export const defaultSelectedMovie: Movie = {
   mediaTags: [],
 };
 
-const lotGradients = ["#3F5EFB", "#4d6bff", "#FC466B"];
-const wishlistGradients = ["#00C9FF", "#00C9FF", "#92FE9D"];
+//const lotGradients = ["#3F5EFB", "#4d6bff", "#FC466B"];
+//const wishlistGradients = ["#00C9FF", "#00C9FF", "#92FE9D"];
 const solidGradient = ["black", "black"];
 
 const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
@@ -74,7 +74,10 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
 
   useEffect(() => {
     if (selectedMovie.id > 0)
-      navigation.navigate("MovieDetailsScreen", { movieData: selectedMovie });
+      navigation.navigate("MovieDetailsScreen", {
+        movieData: selectedMovie,
+        setSelectedMovie: () => setSelectedMovie(defaultSelectedMovie),
+      });
   }, [selectedMovie]);
 
   const handleRefresh = () => {

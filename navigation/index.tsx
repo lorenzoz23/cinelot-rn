@@ -7,6 +7,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 import { ColorSchemeName } from "react-native";
 import NotFoundScreen from "../screens/NotFoundScreen";
+import MovieDetailsScreen from "../screens/MovieDetails";
 import { RootStackParamList } from "../types/types";
 import BottomTabNavigator from "./BottomTabNavigator";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -36,6 +37,14 @@ function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
+      <Stack.Screen
+        name="MovieDetailsScreen"
+        component={MovieDetailsScreen}
+        options={() => ({
+          headerTransparent: true,
+          headerShown: false,
+        })}
+      />
       <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}

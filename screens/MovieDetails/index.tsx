@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   View,
-  SafeAreaView,
   ScrollView,
   ImageBackground,
   TouchableOpacity,
@@ -9,17 +8,16 @@ import {
 import { Movie } from "../../types/Movie";
 import { MovieDetailsStyles } from "./styles";
 import { MonoText as Text } from "../../components/StyledText";
-import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import { defaultSelectedMovie } from "../LotHome/LotHome";
 
-const MovieDetails = ({
-  route,
-  navigation,
-}: {
+interface MovieDetailsProps {
   route: any;
   navigation: any;
-}) => {
-  const { movieData } = route.params;
+}
+
+const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
+  const { movieData, setSelectedMovie } = route.params;
   const [movie, setMovie] = useState(defaultSelectedMovie);
 
   useEffect(() => {
@@ -27,8 +25,17 @@ const MovieDetails = ({
     setMovie(movie);
   }, []);
 
+  useEffect(() => {
+    navigation.addListener("beforeRemove", (e: any) => {
+      // Prevent default behavior of leaving the screen (if needed)
+      e.preventDefault();
+      setSelectedMovie(defaultSelectedMovie);
+      navigation.dispatch(e.data.action);
+    });
+  }, [navigation]);
+
   return (
-    <SafeAreaView style={MovieDetailsStyles.container}>
+    <View style={MovieDetailsStyles.container}>
       <View
         style={{
           ...MovieDetailsStyles.container,
@@ -235,7 +242,7 @@ const MovieDetails = ({
           </View>
         </ImageBackground>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
