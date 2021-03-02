@@ -17,7 +17,7 @@ import {
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
 import { MaterialIcons } from "@expo/vector-icons";
-import Modal from "../components/Modal";
+import FilterModal from "../components/Modals/FilterModal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -113,7 +113,7 @@ const HomeNavigator = () => {
           <>
             <HomeScreen {...props} />
             {isModalVisible && (
-              <Modal handleClose={() => setIsModalVisible(false)} />
+              <FilterModal handleClose={() => setIsModalVisible(false)} />
             )}
           </>
         )}

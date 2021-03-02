@@ -10,6 +10,9 @@ import { MovieDetailsStyles } from "./styles";
 import { MonoText as Text } from "../../components/StyledText";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { defaultSelectedMovie } from "../LotHome/LotHome";
+import DeleteModal from "../../components/Modals/DeleteModal";
+import MoreModal from "../../components/Modals/MoreModal";
+import TagModal from "../../components/Modals/TagModal";
 
 interface MovieDetailsProps {
   route: any;
@@ -19,6 +22,9 @@ interface MovieDetailsProps {
 const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
   const { movieData, setSelectedMovie } = route.params;
   const [movie, setMovie] = useState(defaultSelectedMovie);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isMoreModalVisible, setIsMoreModalVisible] = useState(false);
+  const [isTagModalVisible, setIsTagModalVisible] = useState(false);
 
   useEffect(() => {
     const movie: Movie = movieData;
@@ -27,7 +33,6 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
 
   useEffect(() => {
     navigation.addListener("beforeRemove", (e: any) => {
-      // Prevent default behavior of leaving the screen (if needed)
       e.preventDefault();
       setSelectedMovie(defaultSelectedMovie);
       navigation.dispatch(e.data.action);
@@ -51,7 +56,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
             <Text style={MovieDetailsStyles.nameHeader}>{movie.name}</Text>
             <TouchableOpacity
               style={{ ...MovieDetailsStyles.moreButton }}
-              onPress={() => {}}
+              onPress={() => setIsMoreModalVisible(true)}
               activeOpacity={0.5}
             >
               <Entypo name="dots-three-horizontal" size={25} color="#34495E" />
@@ -165,41 +170,21 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
             <TouchableOpacity
               style={{
                 ...MovieDetailsStyles.deleteButton,
-                backgroundColor: "#2ECC71",
+                backgroundColor: "#ECF0F1",
                 flexDirection: "row",
                 justifyContent: "center",
                 marginBottom: 10,
                 alignItems: "center",
               }}
-              onPress={() => {}}
+              onPress={() => setIsTagModalVisible(true)}
               activeOpacity={0.5}
             >
-              <AntDesign name="tags" color="white" size={25} />
+              <AntDesign name="tags" color="#283747" size={25} />
               <Text
-                style={{ fontSize: 18, paddingLeft: 5 }}
+                style={{ fontSize: 18, paddingLeft: 5, color: "#283747" }}
                 ellipsizeMode="tail"
               >
-                how do you own this?
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                ...MovieDetailsStyles.deleteButton,
-                backgroundColor: "#5DADE2",
-                flexDirection: "row",
-                justifyContent: "center",
-                marginBottom: 10,
-                alignItems: "center",
-              }}
-              onPress={() => {}}
-              activeOpacity={0.5}
-            >
-              <AntDesign name="star" color="white" size={25} />
-              <Text
-                style={{ fontSize: 18, paddingLeft: 5 }}
-                ellipsizeMode="tail"
-              >
-                rate film
+                How do you own this?
               </Text>
             </TouchableOpacity>
             <View style={{ ...MovieDetailsStyles.row, paddingVertical: 10 }}>
@@ -228,12 +213,12 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   }}
                   ellipsizeMode="tail"
                 >
-                  back
+                  Back
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={{ ...MovieDetailsStyles.deleteButton }}
-                onPress={() => {}}
+                onPress={() => setIsDeleteModalVisible(true)}
                 activeOpacity={0.5}
               >
                 <AntDesign name="delete" color="white" size={25} />
@@ -242,6 +227,25 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
           </View>
         </ImageBackground>
       </View>
+      {isDeleteModalVisible && (
+        <DeleteModal
+          movie={movie}
+          isLot={true}
+          handleClose={() => setIsDeleteModalVisible(false)}
+        />
+      )}
+      {isMoreModalVisible && (
+        <MoreModal
+          handleClose={() => setIsMoreModalVisible(false)}
+          movie={movie}
+        />
+      )}
+      {isTagModalVisible && (
+        <TagModal
+          handleClose={() => setIsTagModalVisible(false)}
+          movie={movie}
+        />
+      )}
     </View>
   );
 };
