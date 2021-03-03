@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 
-export const ModalStyles = StyleSheet.create({
-  centered: {
+export const FilterModalStyles = StyleSheet.create({
+  container: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
   },
   modal: {
     backgroundColor: "#283747",
@@ -33,6 +34,12 @@ export const ModalStyles = StyleSheet.create({
     fontFamily: "space-mono",
     fontSize: 15,
   },
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    width: "100%",
+  },
   search: {
     height: 50,
     width: "100%",
@@ -56,12 +63,6 @@ export const ModalStyles = StyleSheet.create({
   filter: {
     backgroundColor: "#5DADE2",
     borderColor: "#2E86C1",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    width: "100%",
   },
   reset: {
     backgroundColor: "#1B2631",
