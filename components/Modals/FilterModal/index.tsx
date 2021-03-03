@@ -1,126 +1,35 @@
 import React from "react";
 import {
-  KeyboardAvoidingView,
-  TextInput,
-  TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-  View,
-  Modal as NativeModal,
-} from "react-native";
-import { FilterModalStyles } from "./styles";
-import { MonoText as Text } from "../../StyledText";
-import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
+  CardStyleInterpolators,
+  createStackNavigator,
+} from "@react-navigation/stack";
+import FilterModal from "./FilterModal";
+import Sorter from "./Sorter";
 
-interface FilterModalProps {
-  handleClose: () => void;
-}
+const FilterModalStack = createStackNavigator();
 
-const FilterModal = (props: FilterModalProps) => {
-  const { handleClose } = props;
+const FilterModalNavigator = () => {
   return (
-    <View>
-      <NativeModal
-        animationType="fade"
-        transparent={true}
-        presentationStyle="overFullScreen"
-        onRequestClose={handleClose}
-        visible
-        onDismiss={handleClose}
+    <FilterModalStack.Navigator
+      initialRouteName="Filter"
+      screenOptions={{
+        cardStyleInterpolator:
+          CardStyleInterpolators.forRevealFromBottomAndroid,
+        headerShown: false,
+        cardStyle: { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+      }}
+    >
+      <FilterModalStack.Screen name="Filter">
+        {() => <FilterModal />}
+      </FilterModalStack.Screen>
+      <FilterModalStack.Screen
+        name="Sorter"
+        options={{ gestureEnabled: false }}
       >
-        <TouchableOpacity
-          style={{ flex: 1 }}
-          activeOpacity={1}
-          onPressOut={handleClose}
-        >
-          <KeyboardAvoidingView
-            //behavior="padding"
-            keyboardVerticalOffset={-20}
-            style={FilterModalStyles.container}
-          >
-            <TouchableWithoutFeedback>
-              <View style={FilterModalStyles.modal}>
-                <Text
-                  style={{
-                    ...FilterModalStyles.text,
-                    ...FilterModalStyles.headerText,
-                  }}
-                >
-                  Filters
-                </Text>
-                <TextInput
-                  placeholder="Search your 16 lot films..."
-                  style={FilterModalStyles.search}
-                  placeholderTextColor="#AEB6BF"
-                  keyboardAppearance="dark"
-                  onChangeText={() => {}}
-                  multiline={false}
-                  editable
-                  autoCapitalize="none"
-                  clearButtonMode="while-editing"
-                  returnKeyType="done" //switch to search if there's input
-                />
-                <View style={FilterModalStyles.sort}>
-                  <TouchableOpacity style={FilterModalStyles.row}>
-                    <Text
-                      style={{
-                        ...FilterModalStyles.text,
-                        textAlign: "left",
-                        fontSize: 18,
-                      }}
-                    >
-                      Sort by...
-                    </Text>
-                    <FontAwesome name="sort" color="white" size={25} />
-                  </TouchableOpacity>
-                </View>
-                <View
-                  style={{
-                    ...FilterModalStyles.sort,
-                    ...FilterModalStyles.filter,
-                  }}
-                >
-                  <TouchableOpacity style={FilterModalStyles.row}>
-                    <Text
-                      style={{
-                        ...FilterModalStyles.text,
-                        textAlign: "left",
-                        fontSize: 18,
-                      }}
-                    >
-                      Filter by...
-                    </Text>
-                    <MaterialIcons
-                      name="movie-filter"
-                      color="white"
-                      size={25}
-                    />
-                  </TouchableOpacity>
-                </View>
-                <TouchableHighlight
-                  style={{
-                    ...FilterModalStyles.button,
-                    ...FilterModalStyles.reset,
-                  }}
-                  onPress={() => {}}
-                  underlayColor="#212F3C"
-                >
-                  <Text style={FilterModalStyles.text}>Reset all filters</Text>
-                </TouchableHighlight>
-                <TouchableHighlight
-                  style={{ ...FilterModalStyles.button }}
-                  onPress={handleClose}
-                  underlayColor="#EC7063"
-                >
-                  <AntDesign name="closecircle" color="white" size={25} />
-                </TouchableHighlight>
-              </View>
-            </TouchableWithoutFeedback>
-          </KeyboardAvoidingView>
-        </TouchableOpacity>
-      </NativeModal>
-    </View>
+        {() => <Sorter />}
+      </FilterModalStack.Screen>
+    </FilterModalStack.Navigator>
   );
 };
 
-export default FilterModal;
+export default FilterModalNavigator;
