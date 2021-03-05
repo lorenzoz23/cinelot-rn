@@ -5,7 +5,6 @@ export const FilterModalStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
   },
   modal: {
     backgroundColor: "#283747",
@@ -14,8 +13,7 @@ export const FilterModalStyles = StyleSheet.create({
     padding: 35,
     alignItems: "center",
     width: "100%",
-    maxHeight: "90%",
-    minHeight: "55%",
+    height: "75%",
   },
   button: {
     backgroundColor: "#E74C3C",
@@ -26,7 +24,7 @@ export const FilterModalStyles = StyleSheet.create({
     marginTop: 20,
   },
   headerText: {
-    fontSize: 23,
+    fontSize: 30,
     marginBottom: 20,
   },
   text: {
@@ -47,7 +45,6 @@ export const FilterModalStyles = StyleSheet.create({
     borderRadius: 12,
     paddingLeft: 10,
     color: "white",
-    margin: 10,
   },
   sort: {
     width: "100%",

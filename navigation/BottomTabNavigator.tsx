@@ -18,6 +18,7 @@ import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
 import { MaterialIcons } from "@expo/vector-icons";
 import FilterModal from "../components/Modals/FilterModal";
+import FilterModalNavigator from "../components/Modals/FilterModal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -67,7 +68,6 @@ export default BottomTabNavigator;
 
 const HomeStack = createStackNavigator<HomeParamList>();
 const HomeNavigator = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <HomeStack.Navigator initialRouteName="HomeScreen">
       <HomeStack.Screen
@@ -78,7 +78,9 @@ const HomeNavigator = () => {
               title="Cinelot"
               {...optionProps}
               rightElement={
-                <TouchableOpacity onPress={() => setIsModalVisible(true)}>
+                <TouchableOpacity
+                  onPress={() => optionProps.navigation.navigate("FilterHome")}
+                >
                   <MaterialIcons name="filter-list" color="white" size={30} />
                 </TouchableOpacity>
               }
@@ -109,14 +111,7 @@ const HomeNavigator = () => {
           ),
         })}
       >
-        {(props) => (
-          <>
-            <HomeScreen {...props} />
-            {isModalVisible && (
-              <FilterModal handleClose={() => setIsModalVisible(false)} />
-            )}
-          </>
-        )}
+        {(props) => <HomeScreen {...props} />}
       </HomeStack.Screen>
     </HomeStack.Navigator>
   );
