@@ -66,7 +66,7 @@ const RootNavigator = () => {
         name="FilterHome"
         component={FilterModalNavigator}
         options={{
-          ...TransitionPresets.ModalSlideFromBottomIOS,
+          ...TransitionPresets.FadeFromBottomAndroid,
           cardStyle: { backgroundColor: "transparent" },
           gestureResponseDistance: {
             vertical: Dimensions.get("window").height,

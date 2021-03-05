@@ -13,7 +13,7 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { StackActions, useNavigation } from "@react-navigation/native";
 
 const FilterModal = () => {
   const navigator = useNavigation();
@@ -64,6 +64,7 @@ const FilterModal = () => {
             autoCapitalize="none"
             clearButtonMode="while-editing"
             returnKeyType="done" //switch to search if there's input
+            returnKeyLabel="done"
           />
         </View>
         <View
@@ -79,6 +80,7 @@ const FilterModal = () => {
               ...FilterModalStyles.filter,
             }}
             activeOpacity={0.5}
+            onPress={() => navigator.navigate("MediaTagsFilter")}
           >
             <View style={FilterModalStyles.row}>
               <Text
@@ -99,6 +101,7 @@ const FilterModal = () => {
               ...FilterModalStyles.filter,
             }}
             activeOpacity={0.5}
+            onPress={() => navigator.navigate("GenreFilter")}
           >
             <View style={FilterModalStyles.row}>
               <Text
@@ -123,6 +126,7 @@ const FilterModal = () => {
               ...FilterModalStyles.filter,
             }}
             activeOpacity={0.5}
+            onPress={() => navigator.navigate("StarRatingsFilter")}
           >
             <View style={FilterModalStyles.row}>
               <Text
@@ -143,6 +147,7 @@ const FilterModal = () => {
               ...FilterModalStyles.filter,
             }}
             activeOpacity={0.5}
+            onPress={() => navigator.navigate("WatchedFilter")}
           >
             <View style={FilterModalStyles.row}>
               <Text
@@ -186,11 +191,33 @@ const FilterModal = () => {
             margin: 10,
           }}
         >
-          <TouchableOpacity onPress={handleClose} activeOpacity={0.5}>
+          <TouchableOpacity
+            onPress={handleClose}
+            activeOpacity={0.5}
+            style={{
+              alignItems: "center",
+              backgroundColor: "rgba(255, 24, 178, .3)",
+              padding: 10,
+              borderRadius: 10,
+              paddingHorizontal: 20,
+            }}
+          >
             <AntDesign name="closecircle" color="#FF18B2" size={40} />
+            <Text style={{ color: "#FF18B2" }}>Done</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {}} activeOpacity={0.5}>
+          <TouchableOpacity
+            onPress={() => {}}
+            activeOpacity={0.5}
+            style={{
+              alignItems: "center",
+              backgroundColor: "rgba(229, 231, 233, .3)",
+              padding: 10,
+              borderRadius: 10,
+              paddingHorizontal: 20,
+            }}
+          >
             <FontAwesome name="refresh" color="#E5E7E9" size={40} />
+            <Text style={{ color: "#E5E7E9" }}>Reset</Text>
           </TouchableOpacity>
         </View>
       </View>

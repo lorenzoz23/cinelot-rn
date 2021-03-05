@@ -57,7 +57,6 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   };
 
   useEffect(() => {
-    console.log("width", phoneWidth, "height", Dimensions.get("window").height);
     Dimensions.addEventListener("change", onPhoneWidthChange);
   }, []);
 

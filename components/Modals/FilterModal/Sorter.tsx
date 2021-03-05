@@ -1,7 +1,13 @@
 import { Fontisto, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ScrollView, TouchableOpacity, View } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  Switch,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { MonoText as Text } from "../../StyledText";
 import { FilterModalStyles } from "./styles";
 
@@ -39,6 +45,22 @@ const Sorter = () => {
         >
           Sorters
         </Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 10,
+          }}
+        >
+          <Text>Save sorted order</Text>
+          <Switch
+            value={false}
+            style={{ marginLeft: 20 }}
+            trackColor={{ false: "#34495E", true: "#48C9B0" }}
+            ios_backgroundColor="#34495E"
+          />
+        </View>
         <ScrollView
           style={{ flex: 1, width: "100%" }}
           directionalLockEnabled
