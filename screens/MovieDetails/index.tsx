@@ -102,6 +102,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   )
                 )}
               </View>
+
               <View
                 style={{
                   flexDirection: "row",
@@ -187,6 +188,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                 How do you own this?
               </Text>
             </TouchableOpacity>
+
             <View style={{ ...MovieDetailsStyles.row, paddingVertical: 10 }}>
               <TouchableOpacity
                 style={MovieDetailsStyles.backButton}
