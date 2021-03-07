@@ -7,6 +7,7 @@ import {
   FlatList,
   Dimensions,
   TextInput,
+  Alert,
 } from "react-native";
 import { TagModalStyles } from "./styles";
 import { MonoText as Text } from "../../StyledText";
@@ -151,7 +152,25 @@ const TagModal = (props: TagModalProps) => {
                                   </TouchableOpacity>
                                 )}
                                 <TouchableOpacity
-                                  onPress={() => {}}
+                                  onPress={() => {
+                                    if (item.owned) {
+                                      Alert.alert(
+                                        "Danger zone!",
+                                        `Are you sure you want to remove the ${item.name} tag?`,
+                                        [
+                                          {
+                                            text: "Remove it",
+                                            style: "destructive",
+                                          },
+                                          {
+                                            text: "Keep it",
+                                            style: "default",
+                                          },
+                                        ],
+                                        { cancelable: false }
+                                      );
+                                    }
+                                  }}
                                   activeOpacity={0.5}
                                   style={{
                                     flexDirection: "row",
@@ -182,13 +201,13 @@ const TagModal = (props: TagModalProps) => {
                                   ))}
                             {item.owned && showTagDetails && (
                               <TextInput
-                                placeholder={`add a new ${item.name} type here...`}
+                                placeholder={`Add a new ${item.name} type here...`}
                                 style={{
                                   width: "75%",
                                   height: 30,
                                   backgroundColor: "#1A5276",
                                   borderRadius: 10,
-                                  paddingLeft: 5,
+                                  paddingHorizontal: 10,
                                   color: "white",
                                   marginTop: 10,
                                 }}
