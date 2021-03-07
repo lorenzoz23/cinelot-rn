@@ -16,7 +16,7 @@ import {
 } from "../types/types";
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -53,9 +53,7 @@ const BottomTabNavigator = () => {
         name="Settings"
         component={SettingsNavigator}
         options={{
-          tabBarIcon: ({ color }) => (
-            <TabBarIcon name="setting" color={color} />
-          ),
+          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -77,6 +75,7 @@ const HomeNavigator = () => {
               {...optionProps}
               rightElement={
                 <TouchableOpacity
+                  activeOpacity={0.5}
                   onPress={() => optionProps.navigation.navigate("FilterHome")}
                 >
                   <MaterialIcons name="filter-list" color="white" size={30} />
@@ -84,6 +83,7 @@ const HomeNavigator = () => {
               }
               leftElement={
                 <TouchableOpacity
+                  activeOpacity={0.5}
                   onPress={() =>
                     Alert.alert(
                       "You have 16 films in your collection!",
@@ -138,7 +138,17 @@ const SettingsNavigator = () => {
         name="NotFound"
         component={NotFoundScreen}
         options={(optionProps) => ({
-          headerTitle: () => <NavBar title="Settings" {...optionProps} />,
+          headerTitle: () => (
+            <NavBar
+              title="lorenzoz"
+              {...optionProps}
+              rightElement={
+                <TouchableOpacity onPress={() => {}} activeOpacity={0.5}>
+                  <AntDesign name="setting" color="white" size={30} />
+                </TouchableOpacity>
+              }
+            />
+          ),
         })}
       />
     </SettingsStack.Navigator>
