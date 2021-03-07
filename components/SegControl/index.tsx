@@ -17,7 +17,7 @@ const SegControl = (props: SegControlProps) => {
         inactiveTintColor="white"
         initialSelectedName={selected}
         onChangeValue={onChange}
-        style={{ ...SegControlStyles.container, ...SegControlStyles.segment }}
+        style={SegControlStyles.container}
       >
         <Segment name="lot" content="Your Lot" />
         <Segment name="wishlist" content="Your Wishlist" />
@@ -30,7 +30,7 @@ const SegControl = (props: SegControlProps) => {
       inactiveTintColor="white"
       initialSelectedName={selected}
       onChangeValue={onChange}
-      style={{ ...SegControlStyles.container, ...SegControlStyles.segment }}
+      style={SegControlStyles.container}
     >
       <Segment name="lot" content="Your Lot" />
       <Segment name="wishlist" content="Your Wishlist" />

@@ -4,7 +4,4 @@ export const SegControlStyles = StyleSheet.create({
     width: "100%",
     backgroundColor: "#3498DB",
   },
-  segment: {
-    fontFamily: "space-mono",
-  },
 });

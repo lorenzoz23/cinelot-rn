@@ -27,7 +27,7 @@
     "imdbId": "tt1798709",
     "starRating": -1,
     "watched": true,
-    "mediaTags": [{ "name": "blu-ray" }]
+    "mediaTags": [{ "type": "blu-ray" }]
   },
   {
     "name": "The Thing",
@@ -57,6 +57,6 @@
     "imdbId": "tt0084787",
     "starRating": -1,
     "watched": true,
-    "mediaTags": [{ "name": "blu-ray" }]
+    "mediaTags": [{ "type": "blu-ray" }]
   }
 ]

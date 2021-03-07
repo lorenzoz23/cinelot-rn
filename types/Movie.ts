@@ -1,3 +1,5 @@
+import { MediaTag } from "./MediaTag";
+
 export type Movie = {
   name: string;
   year: string;
@@ -11,5 +13,5 @@ export type Movie = {
   imdbId: string;
   starRating: number;
   watched: boolean;
-  mediaTags: any[];
+  mediaTags: MediaTag[];
 };

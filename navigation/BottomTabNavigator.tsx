@@ -1,13 +1,13 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import React, { useState } from "react";
+import React from "react";
 import { Alert, TouchableOpacity } from "react-native";
 import NavBar from "../components/NavBar";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/LotHome/LotHome";
-import NotFoundScreen from "../screens/NotFoundScreen";
-import SearchScreen from "../screens/Search/TabTwoScreen";
+import NotFoundScreen from "../screens/NotFound/NotFoundScreen";
+import SearchScreen from "../screens/Search";
 import {
   BottomTabParamList,
   HomeParamList,
@@ -17,8 +17,6 @@ import {
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
 import { MaterialIcons } from "@expo/vector-icons";
-import FilterModal from "../components/Modals/FilterModal";
-import FilterModalNavigator from "../components/Modals/FilterModal";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

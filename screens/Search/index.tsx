@@ -1,15 +1,10 @@
 import React, { useRef, useState } from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import { TextInput, TouchableOpacity, View } from "react-native";
 import SegControl from "../../components/SegControl";
 import { MonoText as Text } from "../../components/StyledText";
+import { styles } from "./styles";
 
-const TabTwoScreen = ({
-  route,
-  navigation,
-}: {
-  route: any;
-  navigation: any;
-}) => {
+const Search = ({ route, navigation }: { route: any; navigation: any }) => {
   let textInputRef = useRef<TextInput>().current;
   const [showClose, setShowClose] = useState(false);
   const [segState, setSegState] = useState("lot");
@@ -57,38 +52,4 @@ const TabTwoScreen = ({
   );
 };
 
-export default TabTwoScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "stretch",
-    justifyContent: "flex-start",
-    padding: 10,
-  },
-  searchBox: {
-    height: 40,
-    width: "80%",
-    backgroundColor: "#34495E",
-    borderRadius: 15,
-    paddingLeft: 10,
-    color: "white",
-  },
-  searchBoxWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    marginVertical: 10,
-  },
-  cancel: {
-    fontSize: 18,
-    textAlign: "center",
-  },
-  cancelWrapper: {
-    width: "20%",
-    paddingLeft: 5,
-  },
-  segContainer: {
-    paddingVertical: 10,
-  },
-});
+export default Search;

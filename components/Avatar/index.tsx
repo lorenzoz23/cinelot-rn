@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View } from "react-native";
+import { styles } from "./styles";
 
 interface AvatarProps {
   image: string;
@@ -8,18 +9,12 @@ interface AvatarProps {
 const Avatar = (props: AvatarProps) => {
   const { image } = props;
   return (
-    <View
-      style={{
-        borderColor: "#FF33C7",
-        borderWidth: 3,
-        borderRadius: 50,
-      }}
-    >
+    <View style={styles.container}>
       <Image
         source={{
           uri: image,
         }}
-        style={{ width: 60, height: 60, borderRadius: 50 }}
+        style={styles.image}
       />
     </View>
   );

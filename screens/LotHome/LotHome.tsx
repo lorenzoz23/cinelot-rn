@@ -1,13 +1,6 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React, { useEffect, useState } from "react";
-import {
-  SafeAreaView,
-  FlatList,
-  StyleSheet,
-  View,
-  Dimensions,
-  ScaledSize,
-} from "react-native";
+import { SafeAreaView, FlatList, View } from "react-native";
 import MovieCard from "../../components/MovieCard";
 import SegControl from "../../components/SegControl/";
 import {
@@ -15,6 +8,7 @@ import {
   mockWishlistCollection,
 } from "../../mocks/MovieCollection";
 import { Movie } from "../../types/Movie";
+import { styles } from "./styles";
 
 export const defaultSelectedMovie: Movie = {
   name: "",
@@ -38,27 +32,12 @@ const solidGradient = ["black", "black"];
 
 const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
   const [segState, setSegState] = useState("lot");
-  const [phoneWidth, setPhoneWidth] = useState(Dimensions.get("screen").width);
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(
     mockLotCollection
   );
   const [selectedMovie, setSelectedMovie] = useState(defaultSelectedMovie);
   //const flatListRef = useRef();
-
-  const onPhoneWidthChange = ({
-    window,
-    screen,
-  }: {
-    window: ScaledSize;
-    screen: ScaledSize;
-  }) => {
-    setPhoneWidth(screen.width);
-  };
-
-  useEffect(() => {
-    Dimensions.addEventListener("change", onPhoneWidthChange);
-  }, []);
 
   useEffect(() => {
     if (!route.params?.selectedMovie) setSelectedMovie(defaultSelectedMovie);
@@ -90,14 +69,7 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient
-        colors={solidGradient} //{segState === "lot" ? lotGradients : wishlistGradients}
-        style={{
-          flex: 1,
-          width: phoneWidth,
-          alignItems: "flex-start",
-        }}
-      >
+      <LinearGradient colors={solidGradient} style={styles.gradientContainer}>
         <View style={styles.segContainer}>
           <SegControl onChange={setSegState} selected={segState} />
         </View>
@@ -105,13 +77,7 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
           //ref={flatListRef} // extract flatlist to own component
           data={selectedCollection}
           renderItem={({ item }) => (
-            <View
-              style={{
-                marginRight: 10,
-                marginBottom: 10,
-              }}
-              key={item.id}
-            >
+            <View style={styles.movie} key={item.id}>
               <MovieCard data={item as Movie} showMovie={setSelectedMovie} />
             </View>
           )}
@@ -121,25 +87,11 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
           onRefresh={handleRefresh}
           refreshing={refreshing}
           horizontal={false}
-          style={{
-            paddingLeft: 10,
-            paddingBottom: 10,
-            //backgroundColor: "white",
-          }}
+          style={styles.flatListContainer}
         />
       </LinearGradient>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  segContainer: {
-    marginHorizontal: 50,
-    paddingVertical: 10,
-  },
-});
 
 export default LotHome;
