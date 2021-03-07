@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Modal as NativeModal,
   TouchableOpacity,
@@ -6,18 +6,28 @@ import {
   TouchableWithoutFeedback,
   FlatList,
   Dimensions,
+  TextInput,
+  Alert,
 } from "react-native";
 import { TagModalStyles } from "./styles";
 import { MonoText as Text } from "../../StyledText";
-import {
-  AntDesign,
-  Ionicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
+import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";
 
-const tags = ["blu-ray", "dvd", "digital", "4k uhd"];
+const tags = [
+  {
+    name: "blu-ray",
+    owned: true,
+    types: ["standard", "20th anniversary edition", "collector's edition"],
+  },
+  { name: "dvd", owned: true },
+  { name: "digital", owned: true },
+  { name: "4k-uhd", owned: false },
+  { name: "steelbook", owned: false },
+  { name: "criterion", owned: false },
+  { name: "shout! factory", owned: false },
+];
 
 interface TagModalProps {
   handleClose: () => void;
@@ -26,7 +36,9 @@ interface TagModalProps {
 
 const TagModal = (props: TagModalProps) => {
   const { handleClose, movie } = props;
+  const [showTagDetails, setShowTagDetails] = useState(false);
   const deviceWidth = Dimensions.get("window").width;
+
   return (
     <View>
       <NativeModal
@@ -67,7 +79,7 @@ const TagModal = (props: TagModalProps) => {
                     renderItem={({ item, index }) => (
                       <TouchableOpacity
                         style={{
-                          backgroundColor: "#1F618D",
+                          backgroundColor: item.owned ? "#1F618D" : "#1A5276",
                           borderRadius: 30,
                           paddingVertical: 15,
                           paddingHorizontal: 15,
@@ -79,32 +91,132 @@ const TagModal = (props: TagModalProps) => {
                         key={index}
                       >
                         <TouchableWithoutFeedback>
-                          <View
-                            style={{
-                              flexDirection: "row",
-                              alignItems: "center",
-                              justifyContent: "space-between",
-                            }}
-                          >
-                            <Text
+                          <View>
+                            <View
                               style={{
-                                ...TagModalStyles.text,
-                                color: "#85C1E9",
-                                textAlign: "center",
+                                flexDirection: "row",
+                                alignItems: "center",
+                                justifyContent: "space-between",
                               }}
                             >
-                              {item}
-                            </Text>
-                            <TouchableOpacity
-                              onPress={() => {}}
-                              activeOpacity={0.5}
-                            >
-                              <Ionicons
-                                name="remove-circle"
-                                color="#58D68D"
-                                size={30}
+                              <View
+                                style={{
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <Text
+                                  style={{
+                                    ...TagModalStyles.text,
+                                    color: "#85C1E9",
+                                    textAlign: "center",
+                                    opacity: item.owned ? 1 : 0.5,
+                                  }}
+                                >
+                                  {item.name}
+                                </Text>
+                                {item.owned && (
+                                  <View
+                                    style={{
+                                      backgroundColor: "#AF7AC5",
+                                      paddingHorizontal: 8,
+                                      borderRadius: 30,
+                                      marginLeft: 10,
+                                    }}
+                                  >
+                                    <Text style={{ fontSize: 18 }}>
+                                      {item.types ? item.types.length : 1}
+                                    </Text>
+                                  </View>
+                                )}
+                              </View>
+                              <View
+                                style={{
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                }}
+                              >
+                                {item.owned && (
+                                  <TouchableOpacity
+                                    activeOpacity={0.5}
+                                    style={{ marginRight: 10 }}
+                                    onPress={() =>
+                                      setShowTagDetails(!showTagDetails)
+                                    }
+                                  >
+                                    <Entypo
+                                      name="dots-three-horizontal"
+                                      size={30}
+                                      color="white"
+                                    />
+                                  </TouchableOpacity>
+                                )}
+                                <TouchableOpacity
+                                  onPress={() => {
+                                    if (item.owned) {
+                                      Alert.alert(
+                                        "Danger zone!",
+                                        `Are you sure you want to remove the ${item.name} tag?`,
+                                        [
+                                          {
+                                            text: "Remove it",
+                                            style: "destructive",
+                                          },
+                                          {
+                                            text: "Keep it",
+                                            style: "default",
+                                          },
+                                        ],
+                                        { cancelable: false }
+                                      );
+                                    }
+                                  }}
+                                  activeOpacity={0.5}
+                                  style={{
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                  }}
+                                >
+                                  <Ionicons
+                                    name={
+                                      item.owned
+                                        ? "remove-circle"
+                                        : "add-circle"
+                                    }
+                                    color={item.owned ? "#E74C3C" : "#58D68D"}
+                                    size={30}
+                                  />
+                                </TouchableOpacity>
+                              </View>
+                            </View>
+                            {item.owned &&
+                              (showTagDetails && item.types
+                                ? item.types?.map((type) => <Text>{type}</Text>)
+                                : showTagDetails && (
+                                    <Text>
+                                      Have multiple {item.name} copies
+                                      (standard, deluxe, etc)? List them out
+                                      here!
+                                    </Text>
+                                  ))}
+                            {item.owned && showTagDetails && (
+                              <TextInput
+                                placeholder={`Add a new ${item.name} type here...`}
+                                style={{
+                                  width: "75%",
+                                  height: 30,
+                                  backgroundColor: "#1A5276",
+                                  borderRadius: 10,
+                                  paddingHorizontal: 10,
+                                  color: "white",
+                                  marginTop: 10,
+                                }}
+                                editable
+                                clearButtonMode="always"
+                                returnKeyLabel="done"
+                                returnKeyType="done"
                               />
-                            </TouchableOpacity>
+                            )}
                           </View>
                         </TouchableWithoutFeedback>
                       </TouchableOpacity>
@@ -112,22 +224,9 @@ const TagModal = (props: TagModalProps) => {
                     numColumns={1}
                     directionalLockEnabled
                     horizontal={false}
-                    style={{ marginBottom: 20, width: deviceWidth }}
+                    style={{ width: deviceWidth, marginBottom: 20 }}
                   />
-                  <TouchableOpacity
-                    style={{
-                      borderRadius: 50,
-                      backgroundColor: "#8E44AD",
-                      padding: 15,
-                    }}
-                    activeOpacity={0.5}
-                  >
-                    <MaterialCommunityIcons
-                      name="tag-plus"
-                      color="white"
-                      size={50}
-                    />
-                  </TouchableOpacity>
+
                   <View
                     style={{
                       flexDirection: "row",
@@ -144,7 +243,12 @@ const TagModal = (props: TagModalProps) => {
                       activeOpacity={0.5}
                       disabled
                     >
-                      <AntDesign name="checkcircle" color="#58D68D" size={40} />
+                      <AntDesign
+                        name="checkcircle"
+                        color="#58D68D"
+                        size={40}
+                        style={{ opacity: 0.4 }}
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>

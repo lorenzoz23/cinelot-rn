@@ -80,7 +80,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   i === movie.genre.length - 1 ? (
                     <Text
                       style={{
-                        fontSize: 15,
+                        fontSize: 18,
                         textShadowRadius: 3,
                         textShadowOffset: { width: 3, height: 3 },
                         textShadowColor: "black",
@@ -91,7 +91,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   ) : (
                     <Text
                       style={{
-                        fontSize: 15,
+                        fontSize: 18,
                         textShadowRadius: 3,
                         textShadowOffset: { width: 3, height: 3 },
                         textShadowColor: "black",
@@ -102,6 +102,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   )
                 )}
               </View>
+
               <View
                 style={{
                   flexDirection: "row",
@@ -112,7 +113,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
               >
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 18,
                     textShadowRadius: 3,
                     textShadowOffset: { width: 3, height: 3 },
                     textShadowColor: "black",
@@ -123,7 +124,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                 <Text
                   style={{
                     paddingHorizontal: 10,
-                    fontSize: 15,
+                    fontSize: 18,
                     textShadowRadius: 3,
                     textShadowOffset: { width: 3, height: 3 },
                     textShadowColor: "black",
@@ -133,7 +134,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                 </Text>
                 <Text
                   style={{
-                    fontSize: 15,
+                    fontSize: 18,
                     textShadowRadius: 3,
                     textShadowOffset: { width: 3, height: 3 },
                     textShadowColor: "black",
@@ -156,7 +157,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
               />
               <Text
                 style={{
-                  fontSize: 18,
+                  fontSize: 20,
                   textShadowRadius: 3,
                   textShadowOffset: { width: 3, height: 3 },
                   textShadowColor: "black",
@@ -187,6 +188,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                 How do you own this?
               </Text>
             </TouchableOpacity>
+
             <View style={{ ...MovieDetailsStyles.row, paddingVertical: 10 }}>
               <TouchableOpacity
                 style={MovieDetailsStyles.backButton}
