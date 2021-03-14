@@ -21,9 +21,6 @@ export const MovieDetailsStyles = StyleSheet.create({
   nameHeader: {
     fontSize: 35,
     color: "white",
-    textShadowRadius: 3,
-    textShadowOffset: { width: 3, height: 3 },
-    textShadowColor: "black",
   },
   scrollContainer: {
     paddingHorizontal: 0,
@@ -65,9 +62,6 @@ export const MovieDetailsStyles = StyleSheet.create({
   },
   movieDetailsText: {
     fontSize: 18,
-    textShadowRadius: 3,
-    textShadowOffset: { width: 3, height: 3 },
-    textShadowColor: "black",
   },
   separator: {
     backgroundColor: "white",
@@ -91,6 +85,8 @@ export const MovieDetailsStyles = StyleSheet.create({
     justifyContent: "center",
     marginBottom: 10,
     alignItems: "center",
+    borderRadius: 30,
+    padding: 15,
   },
   tagButtonText: {
     fontSize: 18,
@@ -103,14 +99,16 @@ export const MovieDetailsStyles = StyleSheet.create({
   backButtonText: {
     fontSize: 25,
     paddingLeft: 5,
-    textShadowRadius: 3,
-    textShadowOffset: { width: 3, height: 3 },
-    textShadowColor: "black",
   },
   movieDetailsTextContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     paddingVertical: 10,
+  },
+  textShadow: {
+    textShadowRadius: 3,
+    textShadowOffset: { width: 3, height: 3 },
+    textShadowColor: "black",
   },
 });

@@ -58,7 +58,14 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
               MovieDetailsStyles.movieHeaderContent,
             ]}
           >
-            <Text style={MovieDetailsStyles.nameHeader}>{movie.name}</Text>
+            <Text
+              style={[
+                MovieDetailsStyles.nameHeader,
+                MovieDetailsStyles.textShadow,
+              ]}
+            >
+              {movie.name}
+            </Text>
             <TouchableOpacity
               style={MovieDetailsStyles.moreButton}
               onPress={() => setIsMoreModalVisible(true)}
@@ -75,29 +82,50 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
               <View style={MovieDetailsStyles.movieDetailsWrapper}>
                 {movie.genre.map((item, i) =>
                   i === movie.genre.length - 1 ? (
-                    <Text style={MovieDetailsStyles.movieDetailsText}>
+                    <Text
+                      style={[
+                        MovieDetailsStyles.movieDetailsText,
+                        MovieDetailsStyles.textShadow,
+                      ]}
+                    >
                       {item.name}
                     </Text>
                   ) : (
-                    <Text style={MovieDetailsStyles.movieDetailsText}>
+                    <Text
+                      style={[
+                        MovieDetailsStyles.movieDetailsText,
+                        MovieDetailsStyles.textShadow,
+                      ]}
+                    >
                       {item.name},{" "}
                     </Text>
                   )
                 )}
               </View>
               <View style={MovieDetailsStyles.movieDetailsTextContainer}>
-                <Text style={MovieDetailsStyles.movieDetailsText}>
+                <Text
+                  style={[
+                    MovieDetailsStyles.movieDetailsText,
+                    MovieDetailsStyles.textShadow,
+                  ]}
+                >
                   {movie.year}
                 </Text>
                 <Text
                   style={[
                     MovieDetailsStyles.movieDetailsText,
+                    MovieDetailsStyles.textShadow,
                     MovieDetailsStyles.middleDetail,
                   ]}
                 >
                   {movie.rating}
                 </Text>
-                <Text style={MovieDetailsStyles.movieDetailsText}>
+                <Text
+                  style={[
+                    MovieDetailsStyles.movieDetailsText,
+                    MovieDetailsStyles.textShadow,
+                  ]}
+                >
                   {movie.runtime} min
                 </Text>
               </View>
@@ -105,6 +133,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
               <Text
                 style={[
                   MovieDetailsStyles.movieDetailsText,
+                  MovieDetailsStyles.textShadow,
                   MovieDetailsStyles.plot,
                 ]}
               >
@@ -114,10 +143,7 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
           </ScrollView>
           <View>
             <TouchableOpacity
-              style={{
-                ...MovieDetailsStyles.deleteButton,
-                ...MovieDetailsStyles.tagButton,
-              }}
+              style={MovieDetailsStyles.tagButton}
               onPress={() => setIsTagModalVisible(true)}
               activeOpacity={0.5}
             >
@@ -151,7 +177,10 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   color="white"
                 />
                 <Text
-                  style={MovieDetailsStyles.backButtonText}
+                  style={[
+                    MovieDetailsStyles.backButtonText,
+                    MovieDetailsStyles.textShadow,
+                  ]}
                   ellipsizeMode="tail"
                 >
                   Back
