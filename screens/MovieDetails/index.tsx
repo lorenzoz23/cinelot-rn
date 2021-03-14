@@ -52,10 +52,15 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
           style={MovieDetailsStyles.backgroundImage}
           blurRadius={5}
         >
-          <View style={{ ...MovieDetailsStyles.row, marginBottom: 10 }}>
+          <View
+            style={[
+              MovieDetailsStyles.row,
+              MovieDetailsStyles.movieHeaderContent,
+            ]}
+          >
             <Text style={MovieDetailsStyles.nameHeader}>{movie.name}</Text>
             <TouchableOpacity
-              style={{ ...MovieDetailsStyles.moreButton }}
+              style={MovieDetailsStyles.moreButton}
               onPress={() => setIsMoreModalVisible(true)}
               activeOpacity={0.5}
             >
@@ -66,102 +71,42 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
             style={MovieDetailsStyles.scrollContainer}
             directionalLockEnabled
           >
-            <View
-              style={{ justifyContent: "center", alignItems: "flex-start" }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+            <View style={MovieDetailsStyles.scrollableContentWrapper}>
+              <View style={MovieDetailsStyles.movieDetailsWrapper}>
                 {movie.genre.map((item, i) =>
                   i === movie.genre.length - 1 ? (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        textShadowRadius: 3,
-                        textShadowOffset: { width: 3, height: 3 },
-                        textShadowColor: "black",
-                      }}
-                    >
+                    <Text style={MovieDetailsStyles.movieDetailsText}>
                       {item.name}
                     </Text>
                   ) : (
-                    <Text
-                      style={{
-                        fontSize: 18,
-                        textShadowRadius: 3,
-                        textShadowOffset: { width: 3, height: 3 },
-                        textShadowColor: "black",
-                      }}
-                    >
+                    <Text style={MovieDetailsStyles.movieDetailsText}>
                       {item.name},{" "}
                     </Text>
                   )
                 )}
               </View>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  paddingVertical: 10,
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: 18,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 3, height: 3 },
-                    textShadowColor: "black",
-                  }}
-                >
+              <View style={MovieDetailsStyles.movieDetailsTextContainer}>
+                <Text style={MovieDetailsStyles.movieDetailsText}>
                   {movie.year}
                 </Text>
                 <Text
-                  style={{
-                    paddingHorizontal: 10,
-                    fontSize: 18,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 3, height: 3 },
-                    textShadowColor: "black",
-                  }}
+                  style={[
+                    MovieDetailsStyles.movieDetailsText,
+                    MovieDetailsStyles.middleDetail,
+                  ]}
                 >
                   {movie.rating}
                 </Text>
-                <Text
-                  style={{
-                    fontSize: 18,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 3, height: 3 },
-                    textShadowColor: "black",
-                  }}
-                >
+                <Text style={MovieDetailsStyles.movieDetailsText}>
                   {movie.runtime} min
                 </Text>
               </View>
-              <View
-                style={{
-                  backgroundColor: "white",
-                  width: "90%",
-                  height: 1,
-                  alignItems: "center",
-                  marginBottom: 10,
-                  shadowOpacity: 1,
-                  shadowRadius: 1,
-                  shadowOffset: { width: 3, height: 3 },
-                }}
-              />
+              <View style={MovieDetailsStyles.separator} />
               <Text
-                style={{
-                  fontSize: 20,
-                  textShadowRadius: 3,
-                  textShadowOffset: { width: 3, height: 3 },
-                  textShadowColor: "black",
-                }}
+                style={[
+                  MovieDetailsStyles.movieDetailsText,
+                  MovieDetailsStyles.plot,
+                ]}
               >
                 {movie.plot}
               </Text>
@@ -171,25 +116,25 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
             <TouchableOpacity
               style={{
                 ...MovieDetailsStyles.deleteButton,
-                backgroundColor: "#ECF0F1",
-                flexDirection: "row",
-                justifyContent: "center",
-                marginBottom: 10,
-                alignItems: "center",
+                ...MovieDetailsStyles.tagButton,
               }}
               onPress={() => setIsTagModalVisible(true)}
               activeOpacity={0.5}
             >
               <AntDesign name="tags" color="#283747" size={25} />
               <Text
-                style={{ fontSize: 18, paddingLeft: 5, color: "#283747" }}
+                style={MovieDetailsStyles.tagButtonText}
                 ellipsizeMode="tail"
               >
                 How do you own this?
               </Text>
             </TouchableOpacity>
-
-            <View style={{ ...MovieDetailsStyles.row, paddingVertical: 10 }}>
+            <View
+              style={{
+                ...MovieDetailsStyles.row,
+                ...MovieDetailsStyles.bottomButtonContainer,
+              }}
+            >
               <TouchableOpacity
                 style={MovieDetailsStyles.backButton}
                 onPress={() =>
@@ -206,20 +151,14 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                   color="white"
                 />
                 <Text
-                  style={{
-                    fontSize: 25,
-                    paddingLeft: 5,
-                    textShadowRadius: 3,
-                    textShadowOffset: { width: 3, height: 3 },
-                    textShadowColor: "black",
-                  }}
+                  style={MovieDetailsStyles.backButtonText}
                   ellipsizeMode="tail"
                 >
                   Back
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={{ ...MovieDetailsStyles.deleteButton }}
+                style={MovieDetailsStyles.deleteButton}
                 onPress={() => setIsDeleteModalVisible(true)}
                 activeOpacity={0.5}
               >

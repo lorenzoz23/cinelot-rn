@@ -7,6 +7,11 @@ export const DeleteModalStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(0,0,0,0.5)",
   },
+  blurContainer: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "flex-end",
+  },
   modal: {
     backgroundColor: "transparent",
     borderRadius: 30,
@@ -33,5 +38,12 @@ export const DeleteModalStyles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  flex: {
+    flex: 1,
+  },
+  removeFilmText: {
+    fontSize: 18,
+    textAlign: "center",
   },
 });

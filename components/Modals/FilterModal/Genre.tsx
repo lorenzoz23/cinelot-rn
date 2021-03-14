@@ -31,14 +31,11 @@ const GenreFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}>
+    <View style={FilterModalStyles.container}>
       <View
         style={{
           ...FilterModalStyles.modal,
-          paddingBottom: 20,
-          height: "40%",
-          paddingHorizontal: 0,
-          backgroundColor: "#2E86C1",
+          ...FilterModalStyles.mediaTagsContainer,
         }}
       >
         <Text
@@ -50,28 +47,18 @@ const GenreFilter = () => {
           Genre
         </Text>
         <ScrollView
-          style={{ flex: 1, width: "100%" }}
+          style={FilterModalStyles.sortScrollView}
           directionalLockEnabled
           horizontal
         >
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={FilterModalStyles.watchedRow}>
             {genres.map((genre, i) => (
               <TouchableOpacity
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  paddingHorizontal: 20,
-                  paddingVertical: 15,
-                  margin: 5,
-                  backgroundColor: "#212F3C",
-                  borderRadius: 30,
-                  borderColor: "#E5E7E9",
-                  borderWidth: 1,
-                }}
+                style={FilterModalStyles.watchedButton}
                 key={i}
                 activeOpacity={0.5}
               >
-                <Text style={{ fontSize: 15, textAlign: "left" }}>{genre}</Text>
+                <Text style={FilterModalStyles.watchedText}>{genre}</Text>
                 <MaterialCommunityIcons
                   name="drama-masks"
                   color="white"
@@ -84,12 +71,7 @@ const GenreFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={{
-            borderRadius: 30,
-            backgroundColor: "#2874A6",
-            padding: 15,
-            margin: 15,
-          }}
+          style={FilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

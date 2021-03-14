@@ -1,11 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Animated,
-  Dimensions,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React, { useEffect, useRef } from "react";
+import { Animated, TextInput, TouchableOpacity, View } from "react-native";
 import { FilterModalStyles } from "./styles";
 import { MonoText as Text } from "../../StyledText";
 import {
@@ -13,13 +7,12 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
-import { StackActions, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
+import Layout from "../../../constants/Layout";
 
 const FilterModal = () => {
   const navigator = useNavigation();
-  const phoneWidth = Dimensions.get("window").width;
   const fadeInAnim = useRef(new Animated.Value(0)).current;
-  //const [fadeBgColor, setFadeBgColor] = useState(new Animated.Value(0));
 
   useEffect(() => {
     Animated.timing(fadeInAnim, {
@@ -37,14 +30,14 @@ const FilterModal = () => {
     <Animated.View
       style={{
         ...FilterModalStyles.container,
-        width: phoneWidth,
+        width: Layout.window.width,
         opacity: fadeInAnim,
       }}
     >
       <View
-        style={{ ...FilterModalStyles.modal, justifyContent: "space-between" }}
+        style={[FilterModalStyles.modal, FilterModalStyles.filtersHomeWrapper]}
       >
-        <View style={{ width: "100%" }}>
+        <View style={FilterModalStyles.textInputWrapper}>
           <Text
             style={{
               ...FilterModalStyles.text,
@@ -67,13 +60,7 @@ const FilterModal = () => {
             returnKeyLabel="done"
           />
         </View>
-        <View
-          style={{
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
+        <View style={FilterModalStyles.filtersWrapper}>
           <TouchableOpacity
             style={{
               ...FilterModalStyles.sort,
@@ -83,15 +70,7 @@ const FilterModal = () => {
             onPress={() => navigator.navigate("MediaTagsFilter")}
           >
             <View style={FilterModalStyles.row}>
-              <Text
-                style={{
-                  ...FilterModalStyles.text,
-                  textAlign: "left",
-                  fontSize: 18,
-                }}
-              >
-                Your Media Tags
-              </Text>
+              <Text style={FilterModalStyles.labelText}>Your Media Tags</Text>
               <AntDesign name="tags" color="white" size={25} />
             </View>
           </TouchableOpacity>
@@ -104,15 +83,7 @@ const FilterModal = () => {
             onPress={() => navigator.navigate("GenreFilter")}
           >
             <View style={FilterModalStyles.row}>
-              <Text
-                style={{
-                  ...FilterModalStyles.text,
-                  textAlign: "left",
-                  fontSize: 18,
-                }}
-              >
-                Genre
-              </Text>
+              <Text style={FilterModalStyles.labelText}>Genre</Text>
               <MaterialCommunityIcons
                 name="drama-masks"
                 color="white"
@@ -129,15 +100,7 @@ const FilterModal = () => {
             onPress={() => navigator.navigate("StarRatingsFilter")}
           >
             <View style={FilterModalStyles.row}>
-              <Text
-                style={{
-                  ...FilterModalStyles.text,
-                  textAlign: "left",
-                  fontSize: 18,
-                }}
-              >
-                Your Ratings
-              </Text>
+              <Text style={FilterModalStyles.labelText}>Your Ratings</Text>
               <AntDesign name="star" size={25} color="white" />
             </View>
           </TouchableOpacity>
@@ -150,15 +113,7 @@ const FilterModal = () => {
             onPress={() => navigator.navigate("WatchedFilter")}
           >
             <View style={FilterModalStyles.row}>
-              <Text
-                style={{
-                  ...FilterModalStyles.text,
-                  textAlign: "left",
-                  fontSize: 18,
-                }}
-              >
-                Watched
-              </Text>
+              <Text style={FilterModalStyles.labelText}>Watched</Text>
               <FontAwesome name="eye" color="white" size={25} />
             </View>
           </TouchableOpacity>
@@ -168,39 +123,16 @@ const FilterModal = () => {
             onPress={() => navigator.navigate("Sorter")}
           >
             <View style={FilterModalStyles.row}>
-              <Text
-                style={{
-                  ...FilterModalStyles.text,
-                  textAlign: "left",
-                  fontSize: 18,
-                }}
-              >
-                Sort by...
-              </Text>
+              <Text style={FilterModalStyles.labelText}>Sort by...</Text>
               <FontAwesome name="sort" color="white" size={25} />
             </View>
           </TouchableOpacity>
         </View>
-
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-around",
-            width: "100%",
-            alignItems: "center",
-            margin: 10,
-          }}
-        >
+        <View style={FilterModalStyles.bottomButtonsContainer}>
           <TouchableOpacity
             onPress={handleClose}
             activeOpacity={0.5}
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(255, 24, 178, .3)",
-              padding: 10,
-              borderRadius: 10,
-              paddingHorizontal: 20,
-            }}
+            style={FilterModalStyles.done}
           >
             <AntDesign name="closecircle" color="#FF18B2" size={40} />
             <Text style={{ color: "#FF18B2" }}>Done</Text>
@@ -208,13 +140,7 @@ const FilterModal = () => {
           <TouchableOpacity
             onPress={() => {}}
             activeOpacity={0.5}
-            style={{
-              alignItems: "center",
-              backgroundColor: "rgba(229, 231, 233, .3)",
-              padding: 10,
-              borderRadius: 10,
-              paddingHorizontal: 20,
-            }}
+            style={FilterModalStyles.reset}
           >
             <FontAwesome name="refresh" color="#E5E7E9" size={40} />
             <Text style={{ color: "#E5E7E9" }}>Reset</Text>

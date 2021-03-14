@@ -13,6 +13,7 @@ import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";
 import Avatar from "../../Avatar";
+import { sharedModalStyles } from "../styles";
 
 const users = [
   {
@@ -56,12 +57,9 @@ const MoreModal = (props: MoreModalProps) => {
         visible
         onDismiss={handleClose}
       >
-        <BlurView
-          intensity={100}
-          style={{ width: "100%", flex: 1, justifyContent: "flex-end" }}
-        >
+        <BlurView intensity={100} style={sharedModalStyles.blurContainer}>
           <TouchableOpacity
-            style={{ flex: 1 }}
+            style={sharedModalStyles.flex}
             activeOpacity={1}
             onPressOut={handleClose}
           >
@@ -70,40 +68,22 @@ const MoreModal = (props: MoreModalProps) => {
                 <View
                   style={{
                     ...MoreModalStyles.modal,
-                    flex: 1,
-                    maxHeight: "75%",
+                    ...MoreModalStyles.contentContainer,
                   }}
                 >
-                  <View
-                    style={{
-                      alignItems: "center",
-                      marginVertical: 20,
-                      flex: 1,
-                    }}
-                  >
-                    <View
-                      style={{
-                        marginVertical: 20,
-                        alignItems: "center",
-                      }}
-                    >
+                  <View style={MoreModalStyles.innerContentContainer}>
+                    <View style={MoreModalStyles.imageContainer}>
                       <Image
                         source={{
                           uri: movie.poster,
                         }}
-                        style={{
-                          width: 150,
-                          height: 225,
-                          borderRadius: 10,
-                          borderColor: "#CACFD2",
-                          borderWidth: 1,
-                        }}
+                        style={MoreModalStyles.image}
                       />
                     </View>
-                    <View style={{ flexDirection: "row" }}>
+                    <View style={MoreModalStyles.row}>
                       {Array(5)
                         .fill(0)
-                        .map((index, i) => (
+                        .map(() => (
                           <TouchableOpacity>
                             <AntDesign
                               name="star"
@@ -114,62 +94,29 @@ const MoreModal = (props: MoreModalProps) => {
                           </TouchableOpacity>
                         ))}
                     </View>
-                    <TouchableOpacity
-                      style={{
-                        marginVertical: 20,
-                        alignItems: "center",
-                      }}
-                    >
+                    <TouchableOpacity style={MoreModalStyles.watchedContainer}>
                       <FontAwesome name="eye-slash" size={60} color="white" />
-                      <Text
-                        style={{
-                          ...MoreModalStyles.text,
-                          fontSize: 20,
-                        }}
-                      >
-                        Watch
-                      </Text>
+                      <Text style={MoreModalStyles.watchedText}>Watch</Text>
                     </TouchableOpacity>
                     <ScrollView
                       horizontal
                       directionalLockEnabled
-                      contentContainerStyle={{
-                        flexGrow: 1,
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
+                      contentContainerStyle={MoreModalStyles.scrollContainer}
                     >
                       <TouchableOpacity
-                        style={{
-                          flexDirection: "row",
-                        }}
+                        style={MoreModalStyles.row}
                         activeOpacity={1}
                       >
                         {users.map((user) => (
                           <TouchableWithoutFeedback>
                             <TouchableOpacity
                               key={user.id}
-                              style={{
-                                marginHorizontal: 15,
-                                alignItems: "center",
-                              }}
+                              style={MoreModalStyles.userFollowerContainer}
                               activeOpacity={0.5}
                             >
                               <View>
                                 <Avatar image={user.profileImage} />
-                                <View
-                                  style={{
-                                    borderRadius: 30,
-                                    backgroundColor: "#2471A3",
-                                    alignItems: "center",
-                                    position: "absolute",
-                                    bottom: 0,
-                                    right: 0,
-                                    paddingHorizontal: 5,
-                                    flexDirection: "row",
-                                    justifyContent: "center",
-                                  }}
-                                >
+                                <View style={MoreModalStyles.userTagsContainer}>
                                   <Text>{user.tags.length}</Text>
                                   <AntDesign
                                     name="tags"
@@ -178,12 +125,10 @@ const MoreModal = (props: MoreModalProps) => {
                                   />
                                 </View>
                               </View>
-                              <View
-                                style={{ flexDirection: "row", paddingTop: 5 }}
-                              >
+                              <View style={MoreModalStyles.userStarRatings}>
                                 {Array(user.rating)
                                   .fill(0)
-                                  .map((index, i) => (
+                                  .map(() => (
                                     <AntDesign
                                       name="star"
                                       size={15}
@@ -197,14 +142,7 @@ const MoreModal = (props: MoreModalProps) => {
                       </TouchableOpacity>
                     </ScrollView>
                   </View>
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-around",
-                      width: "100%",
-                      alignItems: "center",
-                    }}
-                  >
+                  <View style={MoreModalStyles.bottomButtonContainer}>
                     <TouchableOpacity onPress={handleClose} activeOpacity={0.5}>
                       <AntDesign name="closecircle" color="#FF18B2" size={40} />
                     </TouchableOpacity>

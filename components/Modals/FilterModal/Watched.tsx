@@ -11,14 +11,11 @@ const WatchedFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}>
+    <View style={FilterModalStyles.container}>
       <View
         style={{
           ...FilterModalStyles.modal,
-          paddingBottom: 20,
-
-          height: "40%",
-          backgroundColor: "#2E86C1",
+          ...FilterModalStyles.watchedContainer,
         }}
       >
         <Text
@@ -30,24 +27,14 @@ const WatchedFilter = () => {
           Watched
         </Text>
         <ScrollView style={{ flex: 1 }} directionalLockEnabled horizontal>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View style={FilterModalStyles.watchedRow}>
             {watched.map((item, i) => (
               <TouchableOpacity
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  paddingHorizontal: 20,
-                  paddingVertical: 15,
-                  margin: 5,
-                  backgroundColor: "#212F3C",
-                  borderRadius: 30,
-                  borderColor: "#E5E7E9",
-                  borderWidth: 1,
-                }}
+                style={FilterModalStyles.watchedButton}
                 key={i}
                 activeOpacity={0.5}
               >
-                <Text style={{ fontSize: 15, textAlign: "left" }}>{item}</Text>
+                <Text style={FilterModalStyles.watchedText}>{item}</Text>
                 <FontAwesome
                   name={i === 0 ? "eye" : "eye-slash"}
                   color="white"
@@ -60,12 +47,7 @@ const WatchedFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={{
-            borderRadius: 30,
-            backgroundColor: "#2874A6",
-            padding: 15,
-            margin: 15,
-          }}
+          style={FilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

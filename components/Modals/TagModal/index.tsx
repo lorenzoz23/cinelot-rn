@@ -5,7 +5,6 @@ import {
   View,
   TouchableWithoutFeedback,
   FlatList,
-  Dimensions,
   TextInput,
   Alert,
 } from "react-native";
@@ -14,6 +13,7 @@ import { MonoText as Text } from "../../StyledText";
 import { AntDesign, Entypo, Ionicons } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";
+import { sharedModalStyles } from "../styles";
 
 const tags = [
   {
@@ -37,7 +37,6 @@ interface TagModalProps {
 const TagModal = (props: TagModalProps) => {
   const { handleClose, movie } = props;
   const [showTagDetails, setShowTagDetails] = useState(false);
-  const deviceWidth = Dimensions.get("window").width;
 
   return (
     <View>
@@ -47,28 +46,25 @@ const TagModal = (props: TagModalProps) => {
         visible
         onDismiss={handleClose}
       >
-        <BlurView
-          intensity={100}
-          style={{ flex: 1, justifyContent: "flex-end" }}
-        >
+        <BlurView intensity={100} style={sharedModalStyles.blurContainer}>
           <TouchableOpacity
             style={{ flex: 1 }}
             activeOpacity={1}
             onPressOut={handleClose}
           >
-            <View style={TagModalStyles.container}>
+            <View style={sharedModalStyles.container}>
               <TouchableWithoutFeedback>
                 <View
                   style={{
-                    ...TagModalStyles.modal,
-                    maxHeight: "85%",
+                    ...sharedModalStyles.modal,
+                    ...TagModalStyles.contentContainer,
                   }}
                 >
-                  <View style={{ marginVertical: 20, alignItems: "center" }}>
+                  <View style={TagModalStyles.headerContainer}>
                     <Text
                       style={{
-                        ...TagModalStyles.text,
-                        ...TagModalStyles.headerText,
+                        ...sharedModalStyles.text,
+                        ...sharedModalStyles.headerText,
                       }}
                     >
                       How do you own {movie.name} ({movie.year})?
@@ -79,67 +75,37 @@ const TagModal = (props: TagModalProps) => {
                     renderItem={({ item, index }) => (
                       <TouchableOpacity
                         style={{
+                          ...TagModalStyles.tagContainer,
                           backgroundColor: item.owned ? "#1F618D" : "#1A5276",
-                          borderRadius: 30,
-                          paddingVertical: 15,
-                          paddingHorizontal: 15,
-                          marginVertical: 5,
-                          marginHorizontal: 20,
-                          borderColor: "#CACFD2",
-                          borderWidth: 1,
                         }}
                         key={index}
                       >
                         <TouchableWithoutFeedback>
                           <View>
-                            <View
-                              style={{
-                                flexDirection: "row",
-                                alignItems: "center",
-                                justifyContent: "space-between",
-                              }}
-                            >
-                              <View
-                                style={{
-                                  flexDirection: "row",
-                                  alignItems: "center",
-                                }}
-                              >
+                            <View style={TagModalStyles.innerTagContainer}>
+                              <View style={sharedModalStyles.row}>
                                 <Text
                                   style={{
-                                    ...TagModalStyles.text,
-                                    color: "#85C1E9",
-                                    textAlign: "center",
+                                    ...sharedModalStyles.text,
+                                    ...TagModalStyles.tagNameText,
                                     opacity: item.owned ? 1 : 0.5,
                                   }}
                                 >
                                   {item.name}
                                 </Text>
                                 {item.owned && (
-                                  <View
-                                    style={{
-                                      backgroundColor: "#AF7AC5",
-                                      paddingHorizontal: 8,
-                                      borderRadius: 30,
-                                      marginLeft: 10,
-                                    }}
-                                  >
+                                  <View style={TagModalStyles.ownershipNumber}>
                                     <Text style={{ fontSize: 18 }}>
                                       {item.types ? item.types.length : 1}
                                     </Text>
                                   </View>
                                 )}
                               </View>
-                              <View
-                                style={{
-                                  flexDirection: "row",
-                                  alignItems: "center",
-                                }}
-                              >
+                              <View style={sharedModalStyles.row}>
                                 {item.owned && (
                                   <TouchableOpacity
                                     activeOpacity={0.5}
-                                    style={{ marginRight: 10 }}
+                                    style={TagModalStyles.moreButtonWrapper}
                                     onPress={() =>
                                       setShowTagDetails(!showTagDetails)
                                     }
@@ -172,10 +138,7 @@ const TagModal = (props: TagModalProps) => {
                                     }
                                   }}
                                   activeOpacity={0.5}
-                                  style={{
-                                    flexDirection: "row",
-                                    alignItems: "center",
-                                  }}
+                                  style={sharedModalStyles.row}
                                 >
                                   <Ionicons
                                     name={
@@ -202,15 +165,7 @@ const TagModal = (props: TagModalProps) => {
                             {item.owned && showTagDetails && (
                               <TextInput
                                 placeholder={`Add a new ${item.name} type here...`}
-                                style={{
-                                  width: "75%",
-                                  height: 30,
-                                  backgroundColor: "#1A5276",
-                                  borderRadius: 10,
-                                  paddingHorizontal: 10,
-                                  color: "white",
-                                  marginTop: 10,
-                                }}
+                                style={TagModalStyles.textInput}
                                 editable
                                 clearButtonMode="always"
                                 returnKeyLabel="done"
@@ -224,17 +179,9 @@ const TagModal = (props: TagModalProps) => {
                     numColumns={1}
                     directionalLockEnabled
                     horizontal={false}
-                    style={{ width: deviceWidth, marginBottom: 20 }}
+                    style={TagModalStyles.flatListContainer}
                   />
-
-                  <View
-                    style={{
-                      flexDirection: "row",
-                      justifyContent: "space-around",
-                      width: deviceWidth,
-                      alignItems: "center",
-                    }}
-                  >
+                  <View style={TagModalStyles.bottomButtonContainer}>
                     <TouchableOpacity onPress={handleClose} activeOpacity={0.5}>
                       <AntDesign name="closecircle" color="#FF18B2" size={40} />
                     </TouchableOpacity>

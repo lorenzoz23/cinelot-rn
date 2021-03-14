@@ -27,12 +27,9 @@ const DeleteModal = (props: DeleteModalProps) => {
         visible
         onDismiss={handleClose}
       >
-        <BlurView
-          intensity={100}
-          style={{ width: "100%", flex: 1, justifyContent: "flex-end" }}
-        >
+        <BlurView intensity={100} style={DeleteModalStyles.blurContainer}>
           <TouchableOpacity
-            style={{ flex: 1 }}
+            style={DeleteModalStyles.flex}
             activeOpacity={1}
             onPressOut={handleClose}
           >
@@ -47,18 +44,8 @@ const DeleteModal = (props: DeleteModalProps) => {
                   >
                     Remove {movie.name} from your {isLot ? "Lot" : "Wishlist"}?
                   </Text>
-                  <TouchableOpacity
-                    style={{
-                      ...DeleteModalStyles.button,
-                    }}
-                  >
-                    <Text
-                      style={{
-                        ...DeleteModalStyles.text,
-
-                        fontSize: 18,
-                      }}
-                    >
+                  <TouchableOpacity style={DeleteModalStyles.button}>
+                    <Text style={DeleteModalStyles.removeFilmText}>
                       Remove film
                     </Text>
                   </TouchableOpacity>

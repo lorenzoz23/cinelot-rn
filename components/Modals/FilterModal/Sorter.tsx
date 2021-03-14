@@ -1,13 +1,7 @@
 import { Fontisto, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  Dimensions,
-  ScrollView,
-  Switch,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { ScrollView, Switch, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
 import { FilterModalStyles } from "./styles";
 
@@ -29,12 +23,11 @@ const Sorter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}>
+    <View style={FilterModalStyles.container}>
       <View
         style={{
           ...FilterModalStyles.modal,
-          paddingBottom: 20,
-          height: "90%",
+          ...FilterModalStyles.sorterContainer,
         }}
       >
         <Text
@@ -45,14 +38,7 @@ const Sorter = () => {
         >
           Sorters
         </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 10,
-          }}
-        >
+        <View style={FilterModalStyles.sortSwitchWrapper}>
           <Text>Save sorted order</Text>
           <Switch
             value={false}
@@ -62,23 +48,17 @@ const Sorter = () => {
           />
         </View>
         <ScrollView
-          style={{ flex: 1, width: "100%" }}
+          style={FilterModalStyles.sortScrollView}
           directionalLockEnabled
           horizontal={false}
         >
           {sorters.map((sorter, i) => (
             <TouchableOpacity
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                paddingHorizontal: 10,
-                paddingVertical: 5,
-                margin: 10,
-              }}
+              style={FilterModalStyles.sortItem}
               key={i}
               activeOpacity={0.5}
             >
-              <Text style={{ fontSize: 15, textAlign: "left" }}>{sorter}</Text>
+              <Text style={FilterModalStyles.sortItemText}>{sorter}</Text>
               <Fontisto
                 name={
                   sorter.includes("Reset")
@@ -93,12 +73,7 @@ const Sorter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.goBack()}
-          style={{
-            borderRadius: 30,
-            backgroundColor: "#2874A6",
-            padding: 15,
-            margin: 15,
-          }}
+          style={FilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

@@ -62,7 +62,112 @@ export const FilterModalStyles = StyleSheet.create({
     borderColor: "#2E86C1",
   },
   reset: {
-    backgroundColor: "#1B2631",
+    alignItems: "center",
+    backgroundColor: "rgba(229, 231, 233, .3)",
+    padding: 10,
+    borderRadius: 10,
+    paddingHorizontal: 20,
+  },
+  done: {
+    alignItems: "center",
+    backgroundColor: "rgba(255, 24, 178, .3)",
+    padding: 10,
+    borderRadius: 10,
+    paddingHorizontal: 20,
+  },
+  bottomButtonsContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
     width: "100%",
+    alignItems: "center",
+    margin: 10,
+  },
+  labelText: {
+    textAlign: "left",
+    fontSize: 18,
+    fontFamily: "space-mono",
+  },
+  filtersWrapper: {
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+  },
+  filtersHomeWrapper: {
+    justifyContent: "space-between",
+  },
+  textInputWrapper: {
+    width: "100%",
+  },
+  starRatingsWrapper: {
+    paddingBottom: 20,
+    height: "40%",
+    backgroundColor: "#2E86C1",
+  },
+  starRowWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+  },
+  backButton: {
+    borderRadius: 30,
+    backgroundColor: "#2874A6",
+    padding: 15,
+    margin: 15,
+  },
+  watchedButton: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 15,
+    margin: 5,
+    backgroundColor: "#212F3C",
+    borderRadius: 30,
+    borderColor: "#E5E7E9",
+    borderWidth: 1,
+  },
+  watchedText: {
+    fontSize: 15,
+    textAlign: "left",
+  },
+  watchedRow: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  watchedContainer: {
+    paddingBottom: 20,
+    height: "40%",
+    backgroundColor: "#2E86C1",
+  },
+  sorterContainer: {
+    paddingBottom: 20,
+    height: "90%",
+  },
+  sortSwitchWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+  sortScrollView: {
+    flex: 1,
+    width: "100%",
+  },
+  sortItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    margin: 10,
+  },
+  sortItemText: {
+    fontSize: 15,
+    textAlign: "left",
+  },
+  mediaTagsContainer: {
+    paddingBottom: 20,
+    height: "40%",
+    paddingHorizontal: 0,
+    backgroundColor: "#2E86C1",
   },
 });

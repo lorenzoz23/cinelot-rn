@@ -9,14 +9,11 @@ const StarRatingsFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={{ flex: 1, justifyContent: "flex-end", alignItems: "center" }}>
+    <View style={FilterModalStyles.container}>
       <View
         style={{
           ...FilterModalStyles.modal,
-          paddingBottom: 20,
-
-          height: "40%",
-          backgroundColor: "#2E86C1",
+          ...FilterModalStyles.starRatingsWrapper,
         }}
       >
         <Text
@@ -28,14 +25,7 @@ const StarRatingsFilter = () => {
           Your Rating
         </Text>
         <ScrollView style={{ flex: 1 }} directionalLockEnabled horizontal>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center",
-              alignContent: "center",
-            }}
-          >
+          <View style={FilterModalStyles.starRowWrapper}>
             {Array(5)
               .fill(0)
               .map((index, i) => (
@@ -52,12 +42,7 @@ const StarRatingsFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={{
-            borderRadius: 30,
-            backgroundColor: "#2874A6",
-            padding: 15,
-            margin: 15,
-          }}
+          style={FilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />
