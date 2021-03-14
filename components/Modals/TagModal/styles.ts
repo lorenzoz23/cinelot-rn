@@ -2,17 +2,14 @@ import { StyleSheet } from "react-native";
 import Layout from "../../../constants/Layout";
 
 export const TagModalStyles = StyleSheet.create({
+  flexContainer: {
+    flex: 1,
+  },
   contentContainer: {
     maxHeight: "85%",
   },
   headerContainer: {
     marginVertical: 20,
-    alignItems: "center",
-  },
-  bottomButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: Layout.window.width,
     alignItems: "center",
   },
   flatListContainer: {
@@ -48,11 +45,19 @@ export const TagModalStyles = StyleSheet.create({
   tagNameText: {
     color: "#85C1E9",
     textAlign: "center",
+    fontSize: 25,
   },
-  ownershipNumber: {
+  ownershipNumberWrapper: {
     backgroundColor: "#AF7AC5",
     paddingHorizontal: 8,
     borderRadius: 30,
     marginLeft: 10,
+  },
+  ownershipNumberText: {
+    fontSize: 18,
+  },
+  headerText: {
+    textAlign: "center",
+    fontSize: 35,
   },
 });

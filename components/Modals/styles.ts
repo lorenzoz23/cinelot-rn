@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import Layout from "../../constants/Layout";
 
 export const sharedModalStyles = StyleSheet.create({
   blurContainer: {
@@ -9,7 +10,7 @@ export const sharedModalStyles = StyleSheet.create({
   flex: {
     flex: 1,
   },
-  container: {
+  rootContainer: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
@@ -22,15 +23,14 @@ export const sharedModalStyles = StyleSheet.create({
     alignItems: "center",
     width: "100%",
   },
-  headerText: {
-    fontSize: 35,
-  },
-  text: {
-    textAlign: "center",
-    fontSize: 25,
-  },
   row: {
     flexDirection: "row",
+    alignItems: "center",
+  },
+  bottomButtonContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: Layout.window.width,
     alignItems: "center",
   },
 });

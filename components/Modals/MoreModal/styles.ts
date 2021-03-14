@@ -1,18 +1,9 @@
 import { StyleSheet } from "react-native";
 
 export const MoreModalStyles = StyleSheet.create({
-  container: {
+  contentContainer: {
     flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center",
-    backgroundColor: "rgba(0,0,0,0.5)",
-  },
-  modal: {
-    backgroundColor: "transparent",
-    borderRadius: 50,
-    padding: 35,
-    alignItems: "center",
-    width: "100%",
+    maxHeight: "75%",
   },
   button: {
     borderRadius: 30,
@@ -29,16 +20,6 @@ export const MoreModalStyles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontSize: 25,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  bottomButtonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    width: "100%",
-    alignItems: "center",
   },
   userStarRatings: {
     flexDirection: "row",
@@ -87,9 +68,5 @@ export const MoreModalStyles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20,
     flex: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    maxHeight: "75%",
   },
 });

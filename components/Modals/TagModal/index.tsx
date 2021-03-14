@@ -48,25 +48,20 @@ const TagModal = (props: TagModalProps) => {
       >
         <BlurView intensity={100} style={sharedModalStyles.blurContainer}>
           <TouchableOpacity
-            style={{ flex: 1 }}
+            style={TagModalStyles.flexContainer}
             activeOpacity={1}
             onPressOut={handleClose}
           >
-            <View style={sharedModalStyles.container}>
+            <View style={sharedModalStyles.rootContainer}>
               <TouchableWithoutFeedback>
                 <View
-                  style={{
-                    ...sharedModalStyles.modal,
-                    ...TagModalStyles.contentContainer,
-                  }}
+                  style={[
+                    sharedModalStyles.modal,
+                    TagModalStyles.contentContainer,
+                  ]}
                 >
                   <View style={TagModalStyles.headerContainer}>
-                    <Text
-                      style={{
-                        ...sharedModalStyles.text,
-                        ...sharedModalStyles.headerText,
-                      }}
-                    >
+                    <Text style={TagModalStyles.headerText}>
                       How do you own {movie.name} ({movie.year})?
                     </Text>
                   </View>
@@ -86,7 +81,6 @@ const TagModal = (props: TagModalProps) => {
                               <View style={sharedModalStyles.row}>
                                 <Text
                                   style={{
-                                    ...sharedModalStyles.text,
                                     ...TagModalStyles.tagNameText,
                                     opacity: item.owned ? 1 : 0.5,
                                   }}
@@ -94,8 +88,14 @@ const TagModal = (props: TagModalProps) => {
                                   {item.name}
                                 </Text>
                                 {item.owned && (
-                                  <View style={TagModalStyles.ownershipNumber}>
-                                    <Text style={{ fontSize: 18 }}>
+                                  <View
+                                    style={
+                                      TagModalStyles.ownershipNumberWrapper
+                                    }
+                                  >
+                                    <Text
+                                      style={TagModalStyles.ownershipNumberText}
+                                    >
                                       {item.types ? item.types.length : 1}
                                     </Text>
                                   </View>
@@ -181,7 +181,7 @@ const TagModal = (props: TagModalProps) => {
                     horizontal={false}
                     style={TagModalStyles.flatListContainer}
                   />
-                  <View style={TagModalStyles.bottomButtonContainer}>
+                  <View style={sharedModalStyles.bottomButtonContainer}>
                     <TouchableOpacity onPress={handleClose} activeOpacity={0.5}>
                       <AntDesign name="closecircle" color="#FF18B2" size={40} />
                     </TouchableOpacity>

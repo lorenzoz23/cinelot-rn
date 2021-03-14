@@ -63,13 +63,13 @@ const MoreModal = (props: MoreModalProps) => {
             activeOpacity={1}
             onPressOut={handleClose}
           >
-            <View style={MoreModalStyles.container}>
+            <View style={sharedModalStyles.rootContainer}>
               <TouchableWithoutFeedback>
                 <View
-                  style={{
-                    ...MoreModalStyles.modal,
-                    ...MoreModalStyles.contentContainer,
-                  }}
+                  style={[
+                    sharedModalStyles.modal,
+                    MoreModalStyles.contentContainer,
+                  ]}
                 >
                   <View style={MoreModalStyles.innerContentContainer}>
                     <View style={MoreModalStyles.imageContainer}>
@@ -80,7 +80,7 @@ const MoreModal = (props: MoreModalProps) => {
                         style={MoreModalStyles.image}
                       />
                     </View>
-                    <View style={MoreModalStyles.row}>
+                    <View style={sharedModalStyles.row}>
                       {Array(5)
                         .fill(0)
                         .map(() => (
@@ -104,7 +104,7 @@ const MoreModal = (props: MoreModalProps) => {
                       contentContainerStyle={MoreModalStyles.scrollContainer}
                     >
                       <TouchableOpacity
-                        style={MoreModalStyles.row}
+                        style={sharedModalStyles.row}
                         activeOpacity={1}
                       >
                         {users.map((user) => (
@@ -142,7 +142,7 @@ const MoreModal = (props: MoreModalProps) => {
                       </TouchableOpacity>
                     </ScrollView>
                   </View>
-                  <View style={MoreModalStyles.bottomButtonContainer}>
+                  <View style={sharedModalStyles.bottomButtonContainer}>
                     <TouchableOpacity onPress={handleClose} activeOpacity={0.5}>
                       <AntDesign name="closecircle" color="#FF18B2" size={40} />
                     </TouchableOpacity>

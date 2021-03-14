@@ -10,6 +10,7 @@ import { MonoText as Text } from "../../StyledText";
 import { AntDesign } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";
+import { sharedModalStyles } from "../styles";
 
 interface DeleteModalProps {
   handleClose: () => void;
@@ -27,21 +28,16 @@ const DeleteModal = (props: DeleteModalProps) => {
         visible
         onDismiss={handleClose}
       >
-        <BlurView intensity={100} style={DeleteModalStyles.blurContainer}>
+        <BlurView intensity={100} style={sharedModalStyles.blurContainer}>
           <TouchableOpacity
-            style={DeleteModalStyles.flex}
+            style={sharedModalStyles.flex}
             activeOpacity={1}
             onPressOut={handleClose}
           >
-            <View style={DeleteModalStyles.container}>
+            <View style={sharedModalStyles.rootContainer}>
               <TouchableWithoutFeedback>
                 <View style={DeleteModalStyles.modal}>
-                  <Text
-                    style={{
-                      ...DeleteModalStyles.text,
-                      ...DeleteModalStyles.headerText,
-                    }}
-                  >
+                  <Text style={DeleteModalStyles.headerText}>
                     Remove {movie.name} from your {isLot ? "Lot" : "Wishlist"}?
                   </Text>
                   <TouchableOpacity style={DeleteModalStyles.button}>
