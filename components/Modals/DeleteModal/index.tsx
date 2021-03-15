@@ -34,7 +34,7 @@ const DeleteModal = (props: DeleteModalProps) => {
             activeOpacity={1}
             onPressOut={handleClose}
           >
-            <View style={sharedModalStyles.rootContainer}>
+            <View style={DeleteModalStyles.container}>
               <TouchableWithoutFeedback>
                 <View style={DeleteModalStyles.modal}>
                   <Text style={DeleteModalStyles.headerText}>

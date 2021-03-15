@@ -15,7 +15,7 @@ const MediaTagsFilter = () => {
       <View
         style={{
           ...sharedFilterModalStyles.modal,
-          ...sharedFilterModalStyles.mediaTagsContainer,
+          ...sharedFilterModalStyles.contentContainer,
         }}
       >
         <Text style={sharedFilterModalStyles.headerText}>Your Media Tags</Text>
