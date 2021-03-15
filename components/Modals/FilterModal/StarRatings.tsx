@@ -3,29 +3,26 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles, StarRatingsStyles } from "./styles";
 
 const StarRatingsFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={FilterModalStyles.container}>
+    <View style={sharedFilterModalStyles.container}>
       <View
         style={{
-          ...FilterModalStyles.modal,
-          ...FilterModalStyles.starRatingsWrapper,
+          ...sharedFilterModalStyles.modal,
+          ...sharedFilterModalStyles.contentContainer,
         }}
       >
-        <Text
-          style={{
-            ...FilterModalStyles.text,
-            ...FilterModalStyles.headerText,
-          }}
+        <Text style={sharedFilterModalStyles.headerText}>Your Rating</Text>
+        <ScrollView
+          style={sharedFilterModalStyles.flex}
+          directionalLockEnabled
+          horizontal
         >
-          Your Rating
-        </Text>
-        <ScrollView style={{ flex: 1 }} directionalLockEnabled horizontal>
-          <View style={FilterModalStyles.starRowWrapper}>
+          <View style={StarRatingsStyles.starRowWrapper}>
             {Array(5)
               .fill(0)
               .map((index, i) => (
@@ -42,7 +39,7 @@ const StarRatingsFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={FilterModalStyles.backButton}
+          style={sharedFilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

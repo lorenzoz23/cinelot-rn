@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, Switch, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles, SorterStyles } from "./styles";
 
 const sorters = [
   "Title (Asc)",
@@ -23,22 +23,15 @@ const Sorter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={FilterModalStyles.container}>
+    <View style={sharedFilterModalStyles.container}>
       <View
         style={{
-          ...FilterModalStyles.modal,
-          ...FilterModalStyles.sorterContainer,
+          ...sharedFilterModalStyles.modal,
+          ...SorterStyles.container,
         }}
       >
-        <Text
-          style={{
-            ...FilterModalStyles.text,
-            ...FilterModalStyles.headerText,
-          }}
-        >
-          Sorters
-        </Text>
-        <View style={FilterModalStyles.sortSwitchWrapper}>
+        <Text style={sharedFilterModalStyles.headerText}>Sorters</Text>
+        <View style={SorterStyles.switchWrapper}>
           <Text>Save sorted order</Text>
           <Switch
             value={false}
@@ -48,17 +41,17 @@ const Sorter = () => {
           />
         </View>
         <ScrollView
-          style={FilterModalStyles.sortScrollView}
+          style={sharedFilterModalStyles.scrollContainer}
           directionalLockEnabled
           horizontal={false}
         >
           {sorters.map((sorter, i) => (
             <TouchableOpacity
-              style={FilterModalStyles.sortItem}
+              style={SorterStyles.sortItem}
               key={i}
               activeOpacity={0.5}
             >
-              <Text style={FilterModalStyles.sortItemText}>{sorter}</Text>
+              <Text style={sharedFilterModalStyles.itemText}>{sorter}</Text>
               <Fontisto
                 name={
                   sorter.includes("Reset")
@@ -73,7 +66,7 @@ const Sorter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.goBack()}
-          style={FilterModalStyles.backButton}
+          style={sharedFilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

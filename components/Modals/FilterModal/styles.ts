@@ -1,10 +1,13 @@
 import { StyleSheet } from "react-native";
 
-export const FilterModalStyles = StyleSheet.create({
+export const sharedFilterModalStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
+  },
+  flex: {
+    flex: 1,
   },
   modal: {
     backgroundColor: "#283747",
@@ -26,13 +29,13 @@ export const FilterModalStyles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     marginBottom: 20,
+    textAlign: "center",
   },
   text: {
     textAlign: "center",
-    fontFamily: "space-mono",
     fontSize: 15,
   },
-  row: {
+  iconTextRow: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -46,7 +49,7 @@ export const FilterModalStyles = StyleSheet.create({
     paddingLeft: 10,
     color: "white",
   },
-  sort: {
+  homeRow: {
     width: "100%",
     height: 50,
     borderRadius: 12,
@@ -60,6 +63,10 @@ export const FilterModalStyles = StyleSheet.create({
   filter: {
     backgroundColor: "#5DADE2",
     borderColor: "#2E86C1",
+  },
+  sort: {
+    backgroundColor: "#58D68D",
+    borderColor: "#28B463",
   },
   reset: {
     alignItems: "center",
@@ -98,24 +105,22 @@ export const FilterModalStyles = StyleSheet.create({
   textInputWrapper: {
     width: "100%",
   },
-  starRatingsWrapper: {
-    paddingBottom: 20,
-    height: "40%",
-    backgroundColor: "#2E86C1",
-  },
-  starRowWrapper: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    alignContent: "center",
-  },
   backButton: {
     borderRadius: 30,
     backgroundColor: "#2874A6",
     padding: 15,
     margin: 15,
   },
-  watchedButton: {
+  contentContainer: {
+    paddingBottom: 20,
+    height: "40%",
+    backgroundColor: "#2E86C1",
+  },
+  scrollContainer: {
+    flex: 1,
+    width: "100%",
+  },
+  tagButton: {
     flexDirection: "row",
     justifyContent: "space-between",
     paddingHorizontal: 20,
@@ -126,32 +131,40 @@ export const FilterModalStyles = StyleSheet.create({
     borderColor: "#E5E7E9",
     borderWidth: 1,
   },
-  watchedText: {
+  itemText: {
     fontSize: 15,
     textAlign: "left",
   },
-  watchedRow: {
+  rowItem: {
     flexDirection: "row",
     alignItems: "center",
   },
-  watchedContainer: {
-    paddingBottom: 20,
-    height: "40%",
-    backgroundColor: "#2E86C1",
+  resetText: {
+    color: "#E5E7E9",
   },
-  sorterContainer: {
+  doneText: {
+    color: "#FF18B2",
+  },
+});
+
+export const StarRatingsStyles = StyleSheet.create({
+  starRowWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    alignContent: "center",
+  },
+});
+export const SorterStyles = StyleSheet.create({
+  container: {
     paddingBottom: 20,
     height: "90%",
   },
-  sortSwitchWrapper: {
+  switchWrapper: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 10,
-  },
-  sortScrollView: {
-    flex: 1,
-    width: "100%",
   },
   sortItem: {
     flexDirection: "row",
@@ -160,14 +173,10 @@ export const FilterModalStyles = StyleSheet.create({
     paddingVertical: 5,
     margin: 10,
   },
-  sortItemText: {
-    fontSize: 15,
-    textAlign: "left",
-  },
+});
+export const GenreStyles = StyleSheet.create({});
+export const MediaTagStyles = StyleSheet.create({
   mediaTagsContainer: {
-    paddingBottom: 20,
-    height: "40%",
     paddingHorizontal: 0,
-    backgroundColor: "#2E86C1",
   },
 });

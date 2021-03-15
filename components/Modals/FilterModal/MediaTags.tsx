@@ -3,7 +3,7 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles } from "./styles";
 
 const mediaTags = ["blu-ray", "dvd", "digital", "4k-uhd"];
 
@@ -11,34 +11,27 @@ const MediaTagsFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={FilterModalStyles.container}>
+    <View style={sharedFilterModalStyles.container}>
       <View
         style={{
-          ...FilterModalStyles.modal,
-          ...FilterModalStyles.mediaTagsContainer,
+          ...sharedFilterModalStyles.modal,
+          ...sharedFilterModalStyles.mediaTagsContainer,
         }}
       >
-        <Text
-          style={{
-            ...FilterModalStyles.text,
-            ...FilterModalStyles.headerText,
-          }}
-        >
-          Your Media Tags
-        </Text>
+        <Text style={sharedFilterModalStyles.headerText}>Your Media Tags</Text>
         <ScrollView
-          style={FilterModalStyles.sortScrollView}
+          style={sharedFilterModalStyles.scrollContainer}
           directionalLockEnabled
           horizontal
         >
-          <View style={FilterModalStyles.watchedRow}>
+          <View style={sharedFilterModalStyles.rowItem}>
             {mediaTags.map((mediaTag, i) => (
               <TouchableOpacity
-                style={FilterModalStyles.watchedButton}
+                style={sharedFilterModalStyles.tagButton}
                 key={i}
                 activeOpacity={0.5}
               >
-                <Text style={FilterModalStyles.watchedText}>{mediaTag}</Text>
+                <Text style={sharedFilterModalStyles.itemText}>{mediaTag}</Text>
                 <AntDesign
                   name="tago"
                   color={"#E5E7E9"}
@@ -51,7 +44,7 @@ const MediaTagsFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={FilterModalStyles.backButton}
+          style={sharedFilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

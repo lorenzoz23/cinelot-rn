@@ -3,7 +3,7 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles } from "./styles";
 
 const watched = ["Watched", "Not Watched"];
 
@@ -11,30 +11,23 @@ const WatchedFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={FilterModalStyles.container}>
+    <View style={sharedFilterModalStyles.container}>
       <View
         style={{
-          ...FilterModalStyles.modal,
-          ...FilterModalStyles.watchedContainer,
+          ...sharedFilterModalStyles.modal,
+          ...sharedFilterModalStyles.contentContainer,
         }}
       >
-        <Text
-          style={{
-            ...FilterModalStyles.text,
-            ...FilterModalStyles.headerText,
-          }}
-        >
-          Watched
-        </Text>
+        <Text style={sharedFilterModalStyles.headerText}>Watched</Text>
         <ScrollView style={{ flex: 1 }} directionalLockEnabled horizontal>
-          <View style={FilterModalStyles.watchedRow}>
+          <View style={sharedFilterModalStyles.rowItem}>
             {watched.map((item, i) => (
               <TouchableOpacity
-                style={FilterModalStyles.watchedButton}
+                style={sharedFilterModalStyles.tagButton}
                 key={i}
                 activeOpacity={0.5}
               >
-                <Text style={FilterModalStyles.watchedText}>{item}</Text>
+                <Text style={sharedFilterModalStyles.itemText}>{item}</Text>
                 <FontAwesome
                   name={i === 0 ? "eye" : "eye-slash"}
                   color="white"
@@ -47,7 +40,7 @@ const WatchedFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={FilterModalStyles.backButton}
+          style={sharedFilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

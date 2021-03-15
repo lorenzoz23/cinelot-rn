@@ -3,7 +3,7 @@ import { StackActions, useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { MonoText as Text } from "../../StyledText";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles } from "./styles";
 
 const genres = [
   "Action",
@@ -31,34 +31,27 @@ const GenreFilter = () => {
   const navigator = useNavigation();
 
   return (
-    <View style={FilterModalStyles.container}>
+    <View style={sharedFilterModalStyles.container}>
       <View
         style={{
-          ...FilterModalStyles.modal,
-          ...FilterModalStyles.mediaTagsContainer,
+          ...sharedFilterModalStyles.modal,
+          ...sharedFilterModalStyles.contentContainer,
         }}
       >
-        <Text
-          style={{
-            ...FilterModalStyles.text,
-            ...FilterModalStyles.headerText,
-          }}
-        >
-          Genre
-        </Text>
+        <Text style={sharedFilterModalStyles.headerText}>Genre</Text>
         <ScrollView
-          style={FilterModalStyles.sortScrollView}
+          style={sharedFilterModalStyles.scrollContainer}
           directionalLockEnabled
           horizontal
         >
-          <View style={FilterModalStyles.watchedRow}>
+          <View style={sharedFilterModalStyles.rowItem}>
             {genres.map((genre, i) => (
               <TouchableOpacity
-                style={FilterModalStyles.watchedButton}
+                style={sharedFilterModalStyles.tagButton}
                 key={i}
                 activeOpacity={0.5}
               >
-                <Text style={FilterModalStyles.watchedText}>{genre}</Text>
+                <Text style={sharedFilterModalStyles.itemText}>{genre}</Text>
                 <MaterialCommunityIcons
                   name="drama-masks"
                   color="white"
@@ -71,7 +64,7 @@ const GenreFilter = () => {
         </ScrollView>
         <TouchableOpacity
           onPress={() => navigator.dispatch(StackActions.pop(1))}
-          style={FilterModalStyles.backButton}
+          style={sharedFilterModalStyles.backButton}
           activeOpacity={0.5}
         >
           <Ionicons name="play-back" color="white" size={30} />

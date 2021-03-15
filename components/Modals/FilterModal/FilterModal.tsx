@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, TextInput, TouchableOpacity, View } from "react-native";
-import { FilterModalStyles } from "./styles";
+import { sharedFilterModalStyles } from "./styles";
 import { MonoText as Text } from "../../StyledText";
 import {
   AntDesign,
@@ -29,26 +29,22 @@ const FilterModal = () => {
   return (
     <Animated.View
       style={{
-        ...FilterModalStyles.container,
+        ...sharedFilterModalStyles.container,
         width: Layout.window.width,
         opacity: fadeInAnim,
       }}
     >
       <View
-        style={[FilterModalStyles.modal, FilterModalStyles.filtersHomeWrapper]}
+        style={[
+          sharedFilterModalStyles.modal,
+          sharedFilterModalStyles.filtersHomeWrapper,
+        ]}
       >
-        <View style={FilterModalStyles.textInputWrapper}>
-          <Text
-            style={{
-              ...FilterModalStyles.text,
-              ...FilterModalStyles.headerText,
-            }}
-          >
-            Filters
-          </Text>
+        <View style={sharedFilterModalStyles.textInputWrapper}>
+          <Text style={sharedFilterModalStyles.headerText}>Filters</Text>
           <TextInput
             placeholder="Search your 16 lot films..."
-            style={FilterModalStyles.search}
+            style={sharedFilterModalStyles.search}
             placeholderTextColor="#AEB6BF"
             keyboardAppearance="dark"
             onChangeText={() => {}}
@@ -60,30 +56,32 @@ const FilterModal = () => {
             returnKeyLabel="done"
           />
         </View>
-        <View style={FilterModalStyles.filtersWrapper}>
+        <View style={sharedFilterModalStyles.filtersWrapper}>
           <TouchableOpacity
             style={{
-              ...FilterModalStyles.sort,
-              ...FilterModalStyles.filter,
+              ...sharedFilterModalStyles.homeRow,
+              ...sharedFilterModalStyles.filter,
             }}
             activeOpacity={0.5}
             onPress={() => navigator.navigate("MediaTagsFilter")}
           >
-            <View style={FilterModalStyles.row}>
-              <Text style={FilterModalStyles.labelText}>Your Media Tags</Text>
+            <View style={sharedFilterModalStyles.iconTextRow}>
+              <Text style={sharedFilterModalStyles.labelText}>
+                Your Media Tags
+              </Text>
               <AntDesign name="tags" color="white" size={25} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              ...FilterModalStyles.sort,
-              ...FilterModalStyles.filter,
+              ...sharedFilterModalStyles.homeRow,
+              ...sharedFilterModalStyles.filter,
             }}
             activeOpacity={0.5}
             onPress={() => navigator.navigate("GenreFilter")}
           >
-            <View style={FilterModalStyles.row}>
-              <Text style={FilterModalStyles.labelText}>Genre</Text>
+            <View style={sharedFilterModalStyles.iconTextRow}>
+              <Text style={sharedFilterModalStyles.labelText}>Genre</Text>
               <MaterialCommunityIcons
                 name="drama-masks"
                 color="white"
@@ -93,57 +91,62 @@ const FilterModal = () => {
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              ...FilterModalStyles.sort,
-              ...FilterModalStyles.filter,
+              ...sharedFilterModalStyles.homeRow,
+              ...sharedFilterModalStyles.filter,
             }}
             activeOpacity={0.5}
             onPress={() => navigator.navigate("StarRatingsFilter")}
           >
-            <View style={FilterModalStyles.row}>
-              <Text style={FilterModalStyles.labelText}>Your Ratings</Text>
+            <View style={sharedFilterModalStyles.iconTextRow}>
+              <Text style={sharedFilterModalStyles.labelText}>
+                Your Ratings
+              </Text>
               <AntDesign name="star" size={25} color="white" />
             </View>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              ...FilterModalStyles.sort,
-              ...FilterModalStyles.filter,
+              ...sharedFilterModalStyles.homeRow,
+              ...sharedFilterModalStyles.filter,
             }}
             activeOpacity={0.5}
             onPress={() => navigator.navigate("WatchedFilter")}
           >
-            <View style={FilterModalStyles.row}>
-              <Text style={FilterModalStyles.labelText}>Watched</Text>
+            <View style={sharedFilterModalStyles.iconTextRow}>
+              <Text style={sharedFilterModalStyles.labelText}>Watched</Text>
               <FontAwesome name="eye" color="white" size={25} />
             </View>
           </TouchableOpacity>
           <TouchableOpacity
-            style={FilterModalStyles.sort}
+            style={{
+              ...sharedFilterModalStyles.homeRow,
+              ...sharedFilterModalStyles.sort,
+            }}
             activeOpacity={0.5}
             onPress={() => navigator.navigate("Sorter")}
           >
-            <View style={FilterModalStyles.row}>
-              <Text style={FilterModalStyles.labelText}>Sort by...</Text>
+            <View style={sharedFilterModalStyles.iconTextRow}>
+              <Text style={sharedFilterModalStyles.labelText}>Sort by...</Text>
               <FontAwesome name="sort" color="white" size={25} />
             </View>
           </TouchableOpacity>
         </View>
-        <View style={FilterModalStyles.bottomButtonsContainer}>
+        <View style={sharedFilterModalStyles.bottomButtonsContainer}>
           <TouchableOpacity
             onPress={handleClose}
             activeOpacity={0.5}
-            style={FilterModalStyles.done}
+            style={sharedFilterModalStyles.done}
           >
             <AntDesign name="closecircle" color="#FF18B2" size={40} />
-            <Text style={{ color: "#FF18B2" }}>Done</Text>
+            <Text style={sharedFilterModalStyles.doneText}>Done</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {}}
             activeOpacity={0.5}
-            style={FilterModalStyles.reset}
+            style={sharedFilterModalStyles.reset}
           >
             <FontAwesome name="refresh" color="#E5E7E9" size={40} />
-            <Text style={{ color: "#E5E7E9" }}>Reset</Text>
+            <Text style={sharedFilterModalStyles.resetText}>Reset</Text>
           </TouchableOpacity>
         </View>
       </View>
