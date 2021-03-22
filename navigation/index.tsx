@@ -13,6 +13,7 @@ import BottomTabNavigator from "./BottomTabNavigator";
 import FilterModalNavigator from "../components/Modals/FilterModal";
 import { TransitionPresets } from "@react-navigation/stack";
 import Layout from "../constants/Layout";
+import SettingsModalNavigator from "../components/Modals/SettingsModal";
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -66,6 +67,18 @@ const RootNavigator = () => {
           gestureResponseDistance: {
             vertical: Layout.window.height,
           },
+        }}
+      />
+      <RootStack.Screen
+        name="SettingsHome"
+        component={SettingsModalNavigator}
+        options={{
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+          cardStyle: { backgroundColor: "transparent" },
+          // gestureResponseDistance: {
+          //   vertical: Layout.window.height * 0.2,
+          // },
+          gestureEnabled: false,
         }}
       />
     </RootStack.Navigator>

@@ -1,6 +1,7 @@
 export type RootStackParamList = {
   Root: undefined;
   FilterHome: undefined;
+  SettingsHome: undefined;
   NotFound: undefined;
 };
 
