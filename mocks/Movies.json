@@ -58,5 +58,35 @@
     "starRating": -1,
     "watched": true,
     "mediaTags": [{ "type": "blu-ray" }]
+  },
+  {
+    "name": "Midsommar",
+    "year": "2019",
+    "rating": "R",
+    "genre": [
+      {
+        "id": 27,
+        "name": "Horror"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      },
+      {
+        "id": 9648,
+        "name": "Mystery"
+      }
+    ],
+    "runtime": "148",
+    "plot": "Several friends travel to Sweden to study as anthropologists a summer festival that is held every ninety years in the remote hometown of one of them. What begins as a dream vacation in a place where the sun never sets, gradually turns into a dark nightmare as the mysterious inhabitants invite them to participate in their disturbing festive activities.",
+    "poster": "https://www.themoviedb.org/t/p/original/7LEI8ulZzO5gy9Ww2NVCrKmHeDZ.jpg",
+    "images": [
+      "https://www.themoviedb.org/t/p/original/8yE6wv1l570zWyh6zmkFxysw3Kc.jpg"
+    ],
+    "id": 530385,
+    "imdbId": "tt8772262",
+    "starRating": -1,
+    "watched": true,
+    "mediaTags": [{ "type": "blu-ray" }, { "type": "director's cut" }]
   }
 ]

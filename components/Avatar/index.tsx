@@ -4,17 +4,21 @@ import { styles } from "./styles";
 
 interface AvatarProps {
   image: string;
+  size?: "small" | "large";
 }
 
-const Avatar = (props: AvatarProps) => {
-  const { image } = props;
+const Avatar = ({ image, size = "small" }: AvatarProps) => {
   return (
     <View style={styles.container}>
       <Image
         source={{
           uri: image,
         }}
-        style={styles.image}
+        style={[
+          styles.image,
+          size === "small" && styles.small,
+          size === "large" && styles.large,
+        ]}
       />
     </View>
   );

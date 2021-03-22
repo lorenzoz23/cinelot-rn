@@ -6,17 +6,17 @@ import NavBar from "../components/NavBar";
 import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import HomeScreen from "../screens/LotHome/LotHome";
-import NotFoundScreen from "../screens/NotFound/NotFoundScreen";
 import SearchScreen from "../screens/Search";
 import {
   BottomTabParamList,
   HomeParamList,
   SearchParamList,
-  SettingsParamList,
+  ProfileParamList,
 } from "../types/types";
 import TabBarIcon from "./TabBarIcon";
 import { MonoText as Text } from "../components/StyledText";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import ProfileScreen from "../screens/Profile";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -50,8 +50,8 @@ const BottomTabNavigator = () => {
         }}
       />
       <BottomTab.Screen
-        name="Settings"
-        component={SettingsNavigator}
+        name="Profile"
+        component={ProfileNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
         }}
@@ -130,13 +130,13 @@ const SearchNavigator = () => {
   );
 };
 
-const SettingsStack = createStackNavigator<SettingsParamList>();
-const SettingsNavigator = () => {
+const ProfileStack = createStackNavigator<ProfileParamList>();
+const ProfileNavigator = () => {
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen
+        name="Profile"
+        component={ProfileScreen}
         options={(optionProps) => ({
           headerTitle: () => (
             <NavBar
@@ -151,6 +151,6 @@ const SettingsNavigator = () => {
           ),
         })}
       />
-    </SettingsStack.Navigator>
+    </ProfileStack.Navigator>
   );
 };
