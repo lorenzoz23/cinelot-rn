@@ -4,11 +4,17 @@ export const styles = StyleSheet.create({
   container: {
     borderColor: "#FF33C7",
     borderWidth: 3,
-    borderRadius: 50,
+    borderRadius: 70,
   },
   image: {
+    borderRadius: 70,
+  },
+  small: {
     width: 60,
     height: 60,
-    borderRadius: 50,
+  },
+  large: {
+    width: 120,
+    height: 120,
   },
 });
