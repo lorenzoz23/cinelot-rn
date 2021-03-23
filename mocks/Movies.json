@@ -88,5 +88,31 @@
     "starRating": -1,
     "watched": true,
     "mediaTags": [{ "type": "blu-ray" }, { "type": "director's cut" }]
+  },
+  {
+    "name": "Frances Ha",
+    "year": "2013",
+    "rating": "R",
+    "genre": [
+      {
+        "id": 35,
+        "name": "Comedy"
+      },
+      {
+        "id": 18,
+        "name": "Drama"
+      }
+    ],
+    "runtime": "86",
+    "plot": "An aspiring dancer moves to New York City and becomes caught up in a whirlwind of flighty fair-weather friends, diminishing fortunes and career setbacks.",
+    "poster": "https://www.themoviedb.org/t/p/w220_and_h330_face/jrq1NoKvsxWCcffVOjegiYwloFN.jpg",
+    "images": [
+      "https://www.themoviedb.org/t/p/original/oUVd42KgJWW6YnZLfzI7SDTdcPL.jpg"
+    ],
+    "id": 121986,
+    "imdbId": "tt2347569",
+    "starRating": -1,
+    "watched": true,
+    "mediaTags": [{ "type": "criterion" }]
   }
 ]

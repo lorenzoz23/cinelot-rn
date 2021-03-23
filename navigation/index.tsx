@@ -75,10 +75,10 @@ const RootNavigator = () => {
         options={{
           ...TransitionPresets.ModalSlideFromBottomIOS,
           cardStyle: { backgroundColor: "transparent" },
-          // gestureResponseDistance: {
-          //   vertical: Layout.window.height * 0.2,
-          // },
-          gestureEnabled: false,
+          gestureResponseDistance: {
+            vertical: Layout.window.height * 0.1,
+          },
+          gestureEnabled: true,
         }}
       />
     </RootStack.Navigator>
