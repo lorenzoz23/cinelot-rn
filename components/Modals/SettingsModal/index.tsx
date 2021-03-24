@@ -3,6 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SettingsModal from "./Settings";
 import Preferences from "./Preferences";
 import EditProfile from "./EditProfile";
+import LoginOptions from "./LoginOptions";
+import ImportExport from "./ImportExport";
+import DeleteAccount from "./DeleteAccount";
 
 const SettingsModalStack = createStackNavigator();
 
@@ -32,7 +35,7 @@ const SettingsModalNavigator = () => {
           cardStyle: { backgroundColor: "rgba(0, 0, 0, 0.4)" },
         }}
       >
-        {() => <EditProfile />}
+        {() => <LoginOptions />}
       </SettingsModalStack.Screen>
       <SettingsModalStack.Screen
         name="ImportExport"
@@ -40,7 +43,7 @@ const SettingsModalNavigator = () => {
           cardStyle: { backgroundColor: "rgba(0, 0, 0, 0.4)" },
         }}
       >
-        {() => <EditProfile />}
+        {() => <ImportExport />}
       </SettingsModalStack.Screen>
       <SettingsModalStack.Screen
         name="Preferences"
@@ -49,6 +52,14 @@ const SettingsModalNavigator = () => {
         }}
       >
         {() => <Preferences />}
+      </SettingsModalStack.Screen>
+      <SettingsModalStack.Screen
+        name="DeleteAccount"
+        options={{
+          cardStyle: { backgroundColor: "rgba(0, 0, 0, 0.4)" },
+        }}
+      >
+        {() => <DeleteAccount />}
       </SettingsModalStack.Screen>
     </SettingsModalStack.Navigator>
   );

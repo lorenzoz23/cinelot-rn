@@ -53,6 +53,7 @@ const SettingsModal = () => {
               <TouchableOpacity
                 activeOpacity={0.5}
                 style={SettingsModalStyles.listCellContainer}
+                onPress={() => navigator.navigate("LoginOptions")}
               >
                 <Text style={SettingsModalStyles.listCellText}>
                   Login options
@@ -62,6 +63,7 @@ const SettingsModal = () => {
               <TouchableOpacity
                 activeOpacity={0.5}
                 style={SettingsModalStyles.listCellContainer}
+                onPress={() => navigator.navigate("ImportExport")}
               >
                 <Text style={SettingsModalStyles.listCellText}>
                   Import/Export data
@@ -145,6 +147,7 @@ const SettingsModal = () => {
             <TouchableOpacity
               activeOpacity={0.5}
               style={SettingsModalStyles.listCellContainer}
+              onPress={() => navigator.navigate("DeleteAccount")}
             >
               <Text
                 style={[
