@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import Layout from "../../constants/Layout";
 
 export const ProfileStyles = StyleSheet.create({
   container: {
@@ -64,5 +65,43 @@ export const ProfileStyles = StyleSheet.create({
   },
   middle: {
     marginVertical: 10,
+  },
+  blurContainer: {
+    width: "100%",
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+  tagsContainer: {
+    flex: 1,
+  },
+  separator: {
+    backgroundColor: "#85929E",
+    flex: 1,
+    height: 1,
+    alignItems: "center",
+    marginBottom: 30,
+    marginTop: 20,
+  },
+  titleText: {
+    fontSize: 30,
+    marginBottom: 20,
+    textAlign: "center",
+  },
+  bottomButtonContainer: {
+    margin: 10,
+  },
+  scrollContainer: {
+    flex: 1,
+    width: "100%",
+  },
+  parentScreenContainer: {
+    paddingVertical: Layout.window.height * 0.07,
+    height: "100%",
+  },
+  miniContainer: {
+    backgroundColor: "rgba(23, 32, 42, 0.5)",
+    padding: 10,
+    alignItems: "center",
+    width: "100%",
   },
 });

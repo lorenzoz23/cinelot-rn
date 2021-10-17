@@ -116,27 +116,17 @@ const SettingsModal = () => {
             <FlatList
               data={mockPrizedPossessions}
               renderItem={({ item }) => (
-                <View style={SettingsModalStyles.movie} key={item.id}>
+                <>
                   <TouchableOpacity
                     activeOpacity={0.7}
-                    style={{
-                      backgroundColor: "#ECF0F1",
-                      borderRadius: 30,
-                      position: "absolute",
-                      top: 0,
-                      right: 0,
-                      zIndex: 100,
-                      paddingHorizontal: 5,
-                      paddingVertical: 3,
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: 3,
-                    }}
+                    style={SettingsModalStyles.prizedPossessionRemoveButton}
                   >
                     <FontAwesome name="close" size={20} color="#34495E" />
                   </TouchableOpacity>
-                  <MovieCard data={item as Movie} showMovie={() => {}} />
-                </View>
+                  <View style={SettingsModalStyles.movie} key={item.id}>
+                    <MovieCard data={item as Movie} showMovie={() => {}} />
+                  </View>
+                </>
               )}
               directionalLockEnabled
               horizontal

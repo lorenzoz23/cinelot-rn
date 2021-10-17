@@ -48,6 +48,7 @@ export const SettingsModalStyles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "white",
     borderRadius: 10,
+    opacity: 0.5,
   },
   textInput: {
     height: 50,
@@ -118,5 +119,19 @@ export const SettingsModalStyles = StyleSheet.create({
   centeredText: {
     textAlign: "center",
     marginBottom: 5,
+  },
+  prizedPossessionRemoveButton: {
+    backgroundColor: "#ECF0F1",
+    borderRadius: 30,
+    position: "absolute",
+    top: 0,
+    right: 0,
+    zIndex: 100,
+    paddingHorizontal: 5,
+    paddingVertical: 3,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 5,
+    marginHorizontal: 8,
   },
 });

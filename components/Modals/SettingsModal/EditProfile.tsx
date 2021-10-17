@@ -17,7 +17,7 @@ const EditProfile = () => {
   };
 
   const handleClose = () => {
-    navigator.navigate("Settings");
+    navigator.navigate("SettingsHome");
     navigator.goBack();
   };
 
@@ -51,21 +51,23 @@ const EditProfile = () => {
               style={SettingsModalStyles.textInput}
               clearButtonMode="while-editing"
               returnKeyType="done"
+              value="lorenzoz"
             />
-
             <TextInput
               placeholder="Password"
               style={SettingsModalStyles.textInput}
               returnKeyType="done"
               clearButtonMode="while-editing"
+              value="password"
+              secureTextEntry
             />
-
             <TextInput
               placeholder="Email"
               style={SettingsModalStyles.textInput}
               keyboardType="email-address"
               returnKeyType="done"
               clearButtonMode="while-editing"
+              value="lzep23@gmail.com"
             />
           </ScrollView>
           <View style={sharedFilterModalStyles.bottomButtonsContainer}>
