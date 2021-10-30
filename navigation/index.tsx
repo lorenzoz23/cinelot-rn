@@ -13,6 +13,10 @@ import BottomTabNavigator from "./BottomTabNavigator";
 import FilterModalNavigator from "../components/Modals/FilterModal";
 import { TransitionPresets } from "@react-navigation/stack";
 import Layout from "../constants/Layout";
+import SettingsModalNavigator from "../components/Modals/SettingsModal";
+import { TagsScreen } from "../screens/Profile/Tags";
+import { FollowingScreen } from "../screens/Profile/Following";
+import { FollowersScreen } from "../screens/Profile/Followers";
 
 // If you are not familiar with React Navigation, we recommend going through the
 // "Fundamentals" guide: https://reactnavigation.org/docs/getting-started
@@ -36,6 +40,9 @@ const MainNavigator = () => {
         name="MovieDetailsScreen"
         component={MovieDetailsScreen}
       />
+      <MainStack.Screen name="TagsScreen" component={TagsScreen} />
+      <MainStack.Screen name="FollowingScreen" component={FollowingScreen} />
+      <MainStack.Screen name="FollowersScreen" component={FollowersScreen} />
       <MainStack.Screen
         name="NotFound"
         component={NotFoundScreen}
@@ -66,6 +73,18 @@ const RootNavigator = () => {
           gestureResponseDistance: {
             vertical: Layout.window.height,
           },
+        }}
+      />
+      <RootStack.Screen
+        name="SettingsHome"
+        component={SettingsModalNavigator}
+        options={{
+          ...TransitionPresets.ModalSlideFromBottomIOS,
+          cardStyle: { backgroundColor: "transparent" },
+          gestureResponseDistance: {
+            vertical: Layout.window.height * 0.1,
+          },
+          gestureEnabled: true,
         }}
       />
     </RootStack.Navigator>

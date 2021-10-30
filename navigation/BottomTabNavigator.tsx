@@ -143,7 +143,12 @@ const ProfileNavigator = () => {
               title="lorenzoz"
               {...optionProps}
               rightElement={
-                <TouchableOpacity onPress={() => {}} activeOpacity={0.5}>
+                <TouchableOpacity
+                  onPress={() =>
+                    optionProps.navigation.navigate("SettingsHome")
+                  }
+                  activeOpacity={0.5}
+                >
                   <AntDesign name="setting" color="white" size={30} />
                 </TouchableOpacity>
               }
