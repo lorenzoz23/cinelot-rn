@@ -5,11 +5,11 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from "react-native";
-import { Movie } from "../../types/Movie";
-import { MovieDetailsStyles } from "./styles";
-import { MonoText as Text } from "../../components/StyledText";
 import { AntDesign, Entypo } from "@expo/vector-icons";
-import { defaultSelectedMovie } from "../LotHome/LotHome";
+import { Movie } from "../../types/Movie";
+import { styles } from "./styles";
+import { MonoText as Text } from "../../components/StyledText";
+import { defaultSelectedMovie } from "../LotHome";
 import DeleteModal from "../../components/Modals/DeleteModal";
 import MoreModal from "../../components/Modals/MoreModal";
 import TagModal from "../../components/Modals/TagModal";
@@ -19,122 +19,96 @@ interface MovieDetailsProps {
   navigation: any;
 }
 
-const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
-  const { movieData, setSelectedMovie } = route.params;
-  const [movie, setMovie] = useState(defaultSelectedMovie);
+export const MovieDetailsScreen = ({
+  route,
+  navigation,
+}: MovieDetailsProps) => {
+  const [movie, setMovie] = useState<Movie>(null!);
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const [isMoreModalVisible, setIsMoreModalVisible] = useState(false);
   const [isTagModalVisible, setIsTagModalVisible] = useState(false);
 
   useEffect(() => {
+    const { movieData } = route.params;
     const movie: Movie = movieData;
     setMovie(movie);
   }, []);
 
   useEffect(() => {
+    const { setSelectedMovie } = route.params;
     navigation.addListener("beforeRemove", (e: any) => {
       e.preventDefault();
       setSelectedMovie(defaultSelectedMovie);
       navigation.dispatch(e.data.action);
     });
-  }, [navigation]);
+  }, [route.params, navigation]);
+
+  if (!Boolean(movie)) return null;
 
   return (
-    <View style={MovieDetailsStyles.container}>
-      <View
-        style={{
-          ...MovieDetailsStyles.container,
-          ...MovieDetailsStyles.contentContainer,
-        }}
-      >
+    <View style={styles.container}>
+      <View style={[styles.container, styles.contentContainer]}>
         <ImageBackground
           source={{ uri: movie.images[0] }}
-          style={MovieDetailsStyles.backgroundImage}
+          style={styles.backgroundImage}
           blurRadius={5}
         >
-          <View
-            style={[
-              MovieDetailsStyles.row,
-              MovieDetailsStyles.movieHeaderContent,
-            ]}
-          >
-            <Text
-              style={[
-                MovieDetailsStyles.nameHeader,
-                MovieDetailsStyles.textShadow,
-              ]}
-            >
+          <View style={[styles.row, styles.movieHeaderContent]}>
+            <Text style={[styles.nameHeader, styles.textShadow]}>
               {movie.name}
             </Text>
             <TouchableOpacity
-              style={MovieDetailsStyles.moreButton}
+              style={styles.moreButton}
               onPress={() => setIsMoreModalVisible(true)}
               activeOpacity={0.5}
             >
               <Entypo name="dots-three-horizontal" size={25} color="#34495E" />
             </TouchableOpacity>
           </View>
-          <ScrollView
-            style={MovieDetailsStyles.scrollContainer}
-            directionalLockEnabled
-          >
-            <View style={MovieDetailsStyles.scrollableContentWrapper}>
-              <View style={MovieDetailsStyles.movieDetailsWrapper}>
+          <ScrollView style={styles.scrollContainer} directionalLockEnabled>
+            <View style={styles.scrollableContentWrapper}>
+              <View style={styles.movieDetailsWrapper}>
                 {movie.genre.map((item, i) =>
                   i === movie.genre.length - 1 ? (
                     <Text
-                      style={[
-                        MovieDetailsStyles.movieDetailsText,
-                        MovieDetailsStyles.textShadow,
-                      ]}
+                      key={item.id}
+                      style={[styles.movieDetailsText, styles.textShadow]}
                     >
                       {item.name}
                     </Text>
                   ) : (
                     <Text
-                      style={[
-                        MovieDetailsStyles.movieDetailsText,
-                        MovieDetailsStyles.textShadow,
-                      ]}
+                      key={item.id}
+                      style={[styles.movieDetailsText, styles.textShadow]}
                     >
                       {item.name},{" "}
                     </Text>
                   )
                 )}
               </View>
-              <View style={MovieDetailsStyles.movieDetailsTextContainer}>
-                <Text
-                  style={[
-                    MovieDetailsStyles.movieDetailsText,
-                    MovieDetailsStyles.textShadow,
-                  ]}
-                >
+              <View style={styles.movieDetailsTextContainer}>
+                <Text style={[styles.movieDetailsText, styles.textShadow]}>
                   {movie.year}
                 </Text>
                 <Text
                   style={[
-                    MovieDetailsStyles.movieDetailsText,
-                    MovieDetailsStyles.textShadow,
-                    MovieDetailsStyles.middleDetail,
+                    styles.movieDetailsText,
+                    styles.textShadow,
+                    styles.middleDetail,
                   ]}
                 >
                   {movie.rating}
                 </Text>
-                <Text
-                  style={[
-                    MovieDetailsStyles.movieDetailsText,
-                    MovieDetailsStyles.textShadow,
-                  ]}
-                >
+                <Text style={[styles.movieDetailsText, styles.textShadow]}>
                   {movie.runtime} min
                 </Text>
               </View>
-              <View style={MovieDetailsStyles.separator} />
+              <View style={styles.separator} />
               <Text
                 style={[
-                  MovieDetailsStyles.movieDetailsText,
-                  MovieDetailsStyles.textShadow,
-                  MovieDetailsStyles.plot,
+                  styles.movieDetailsText,
+                  styles.textShadow,
+                  styles.plot,
                 ]}
               >
                 {movie.plot}
@@ -143,26 +117,18 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
           </ScrollView>
           <View>
             <TouchableOpacity
-              style={MovieDetailsStyles.tagButton}
+              style={styles.tagButton}
               onPress={() => setIsTagModalVisible(true)}
               activeOpacity={0.5}
             >
               <AntDesign name="tags" color="#283747" size={25} />
-              <Text
-                style={MovieDetailsStyles.tagButtonText}
-                ellipsizeMode="tail"
-              >
+              <Text style={styles.tagButtonText} ellipsizeMode="tail">
                 How do you own this?
               </Text>
             </TouchableOpacity>
-            <View
-              style={{
-                ...MovieDetailsStyles.row,
-                ...MovieDetailsStyles.bottomButtonContainer,
-              }}
-            >
+            <View style={[styles.row, styles.bottomButtonContainer]}>
               <TouchableOpacity
-                style={MovieDetailsStyles.backButton}
+                style={styles.backButton}
                 onPress={() =>
                   navigation.navigate("HomeScreen", {
                     selectedMovie: undefined,
@@ -170,24 +136,16 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
                 }
                 activeOpacity={0.5}
               >
-                <AntDesign
-                  name="back"
-                  size={30}
-                  style={{ marginBottom: -3 }}
-                  color="white"
-                />
+                <AntDesign name="back" size={30} color="white" />
                 <Text
-                  style={[
-                    MovieDetailsStyles.backButtonText,
-                    MovieDetailsStyles.textShadow,
-                  ]}
+                  style={[styles.backButtonText, styles.textShadow]}
                   ellipsizeMode="tail"
                 >
                   Back
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={MovieDetailsStyles.deleteButton}
+                style={styles.deleteButton}
                 onPress={() => setIsDeleteModalVisible(true)}
                 activeOpacity={0.5}
               >
@@ -199,9 +157,9 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
       </View>
       {isDeleteModalVisible && (
         <DeleteModal
-          movie={movie}
           isLot={true}
           handleClose={() => setIsDeleteModalVisible(false)}
+          movie={movie}
         />
       )}
       {isMoreModalVisible && (
@@ -219,5 +177,3 @@ const MovieDetails = ({ route, navigation }: MovieDetailsProps) => {
     </View>
   );
 };
-
-export default MovieDetails;

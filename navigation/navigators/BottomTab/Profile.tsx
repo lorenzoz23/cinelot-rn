@@ -4,7 +4,7 @@ import { TouchableOpacity } from "react-native";
 import NavBar from "../../../components/NavBar";
 import { ProfileParamList } from "../../../types/ParamLists";
 import { AntDesign } from "@expo/vector-icons";
-import ProfileScreen from "../../../screens/Profile";
+import { ProfileScreen } from "../../../screens/Profile";
 
 const ProfileStack = createStackNavigator<ProfileParamList>();
 export const ProfileNavigator = () => {

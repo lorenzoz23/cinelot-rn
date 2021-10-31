@@ -5,14 +5,14 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  segContainer: {
-    marginHorizontal: 50,
-    paddingVertical: 10,
-  },
-  gradientContainer: {
+  contentContainer: {
     flex: 1,
     width: Layout.window.width,
     alignItems: "flex-start",
+  },
+  segContainer: {
+    marginHorizontal: 50,
+    paddingVertical: 10,
   },
   movie: {
     marginRight: 10,

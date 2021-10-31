@@ -25,8 +25,8 @@
     ],
     "id": 152601,
     "imdbId": "tt1798709",
-    "starRating": -1,
-    "watched": true,
+    "userStarRating": -1,
+    "hasWatched": true,
     "mediaTags": [{ "type": "blu-ray" }]
   },
   {
@@ -55,8 +55,8 @@
     ],
     "id": 1091,
     "imdbId": "tt0084787",
-    "starRating": -1,
-    "watched": true,
+    "userStarRating": -1,
+    "hasWatched": true,
     "mediaTags": [{ "type": "blu-ray" }]
   },
   {
@@ -85,8 +85,8 @@
     ],
     "id": 530385,
     "imdbId": "tt8772262",
-    "starRating": -1,
-    "watched": true,
+    "userStarRating": -1,
+    "hasWatched": true,
     "mediaTags": [{ "type": "blu-ray" }, { "type": "director's cut" }]
   },
   {
@@ -111,8 +111,8 @@
     ],
     "id": 121986,
     "imdbId": "tt2347569",
-    "starRating": -1,
-    "watched": true,
+    "userStarRating": -1,
+    "hasWatched": true,
     "mediaTags": [{ "type": "criterion" }]
   }
 ]

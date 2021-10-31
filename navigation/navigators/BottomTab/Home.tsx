@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Alert, TouchableOpacity } from "react-native";
 import NavBar from "../../../components/NavBar";
-import HomeScreen from "../../../screens/LotHome/LotHome";
+import { LotHomeScreen as HomeScreen } from "../../../screens/LotHome";
 import { HomeParamList } from "../../../types/ParamLists";
 import { MonoText as Text } from "../../../components/StyledText";
 import { MaterialIcons } from "@expo/vector-icons";

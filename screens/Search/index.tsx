@@ -4,10 +4,17 @@ import SegControl from "../../components/SegControl";
 import { MonoText as Text } from "../../components/StyledText";
 import { styles } from "./styles";
 
-const Search = ({ route, navigation }: { route: any; navigation: any }) => {
-  let textInputRef = useRef<TextInput>().current;
+export const SearchScreen = ({
+  route,
+  navigation,
+}: {
+  route: any;
+  navigation: any;
+}) => {
   const [showClose, setShowClose] = useState(false);
   const [segState, setSegState] = useState("lot");
+
+  let textInputRef = useRef<TextInput>().current;
 
   return (
     <View style={styles.container}>
@@ -17,8 +24,8 @@ const Search = ({ route, navigation }: { route: any; navigation: any }) => {
             ref={(ref) => {
               textInputRef = ref!;
             }}
-            style={{ ...styles.searchBox, width: showClose ? "80%" : "100%" }}
-            placeholder="Search your collection, films to add, users..."
+            style={[styles.searchBox, { width: showClose ? "80%" : "100%" }]}
+            placeholder="Search your collection, add films, find users..."
             placeholderTextColor="#AEB6BF"
             editable
             autoFocus
@@ -31,7 +38,7 @@ const Search = ({ route, navigation }: { route: any; navigation: any }) => {
           {showClose && (
             <TouchableOpacity
               style={styles.cancelWrapper}
-              onPress={() => textInputRef?.blur()}
+              onPress={textInputRef?.blur}
               activeOpacity={0.5}
             >
               <Text style={styles.cancel}>close</Text>
@@ -51,5 +58,3 @@ const Search = ({ route, navigation }: { route: any; navigation: any }) => {
     </View>
   );
 };
-
-export default Search;

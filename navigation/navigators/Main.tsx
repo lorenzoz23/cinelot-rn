@@ -1,11 +1,11 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import NotFoundScreen from "../../screens/NotFound/NotFoundScreen";
-import MovieDetailsScreen from "../../screens/MovieDetails";
+import NotFoundScreen from "../../screens/NotFound";
 import { TagsScreen } from "../../screens/Profile/Tags";
 import { FollowingScreen } from "../../screens/Profile/Following";
 import { FollowersScreen } from "../../screens/Profile/Followers";
 import { BottomTabNavigator } from ".";
+import { MovieDetailsScreen } from "../../screens/MovieDetails";
 
 const MainStack = createStackNavigator();
 export const MainNavigator = () => {
