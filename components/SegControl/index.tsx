@@ -8,8 +8,7 @@ interface SegControlProps {
   search?: boolean;
 }
 
-const SegControl = (props: SegControlProps) => {
-  const { onChange, selected, search } = props;
+export const SegControl = ({ onChange, selected, search }: SegControlProps) => {
   if (!search) {
     return (
       <SegmentedControl
@@ -32,12 +31,9 @@ const SegControl = (props: SegControlProps) => {
       onChangeValue={onChange}
       style={SegControlStyles.container}
     >
-      <Segment name="lot" content="Your Lot" />
-      <Segment name="wishlist" content="Your Wishlist" />
+      <Segment name="collection" content="Your collection" />
       <Segment name="films" content="Films to add" />
       <Segment name="users" content="Users" />
     </SegmentedControl>
   );
 };
-
-export default SegControl;

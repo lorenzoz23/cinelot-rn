@@ -7,7 +7,7 @@ interface AvatarProps {
   size?: "small" | "large";
 }
 
-const Avatar = ({ image, size = "small" }: AvatarProps) => {
+export const Avatar = ({ image, size = "small" }: AvatarProps) => {
   return (
     <View style={styles.container}>
       <Image
@@ -23,5 +23,3 @@ const Avatar = ({ image, size = "small" }: AvatarProps) => {
     </View>
   );
 };
-
-export default Avatar;

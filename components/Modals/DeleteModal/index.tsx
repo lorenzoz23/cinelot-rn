@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 import { DeleteModalStyles } from "./styles";
-import { MonoText as Text } from "../../StyledText";
+import { MonoText as Text } from "../../Text";
 import { AntDesign } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";

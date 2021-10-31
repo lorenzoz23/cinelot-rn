@@ -1,8 +1,7 @@
-import { LinearGradient } from "expo-linear-gradient";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView, FlatList, View } from "react-native";
-import MovieCard from "../../components/MovieCard";
-import SegControl from "../../components/SegControl/";
+import { MovieCard } from "../../components/MovieCard";
+import { SegControl } from "../../components/SegControl";
 import {
   mockLotCollection,
   mockWishlistCollection,
@@ -14,74 +13,70 @@ export const defaultSelectedMovie: Movie = {
   name: "",
   year: "",
   rating: "",
-  genre: [""],
+  genre: [{ id: -1, name: "" }],
   runtime: "",
   plot: "",
   poster: "",
   images: [""],
   id: -1,
   imdbId: "",
-  starRating: -1,
-  watched: false,
+  userStarRating: -1,
+  hasWatched: false,
   mediaTags: [],
 };
 
-//const lotGradients = ["#3F5EFB", "#4d6bff", "#FC466B"];
-//const wishlistGradients = ["#00C9FF", "#00C9FF", "#92FE9D"];
-const solidGradient = ["black", "black"];
-
-const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
+export const LotHomeScreen = ({
+  navigation,
+  route,
+}: {
+  navigation: any;
+  route: any;
+}) => {
   const [segState, setSegState] = useState("lot");
   const [refreshing, setRefreshing] = useState(false);
   const [selectedCollection, setSelectedCollection] = useState(
-    mockLotCollection
+    mockLotCollection as Movie[]
   );
   const [selectedMovie, setSelectedMovie] = useState(defaultSelectedMovie);
-  //const flatListRef = useRef();
 
   useEffect(() => {
-    if (!route.params?.selectedMovie) setSelectedMovie(defaultSelectedMovie);
+    if (!Boolean(route.params?.selectedMovie))
+      setSelectedMovie(defaultSelectedMovie);
   }, [route.params]);
 
   useEffect(() => {
-    let updatedCollection = [...selectedCollection];
-    updatedCollection =
+    const updatedCollection =
       segState === "lot" ? mockLotCollection : mockWishlistCollection;
     setSelectedCollection(updatedCollection);
   }, [segState]);
 
   useEffect(() => {
-    if (selectedMovie.id > 0)
+    if (!Boolean(selectedMovie.id < 0))
       navigation.navigate("MovieDetailsScreen", {
         movieData: selectedMovie,
         setSelectedMovie: () => setSelectedMovie(defaultSelectedMovie),
       });
   }, [selectedMovie]);
 
-  const handleRefresh = () => {
+  const handleRefresh = useCallback(() => {
     setRefreshing(true);
     setTimeout(() => setRefreshing(false), 1000);
-  };
-
-  // const scrollToTop = () => {
-  //   flatListRef.current.scrollToOffset({animated: true, offset: 0})
-  // }
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
-      <LinearGradient colors={solidGradient} style={styles.gradientContainer}>
+      <View style={styles.contentContainer}>
         <View style={styles.segContainer}>
           <SegControl onChange={setSegState} selected={segState} />
         </View>
         <FlatList
-          //ref={flatListRef} // extract flatlist to own component
           data={selectedCollection}
           renderItem={({ item }) => (
             <View style={styles.movie} key={item.id}>
               <MovieCard data={item as Movie} showMovie={setSelectedMovie} />
             </View>
           )}
-          //keyExtractor={(item) => String(item.id)}
+          keyExtractor={(item) => String(item.id)}
           numColumns={4} // add screen size logic here
           directionalLockEnabled
           onRefresh={handleRefresh}
@@ -89,9 +84,7 @@ const LotHome = ({ navigation, route }: { navigation: any; route: any }) => {
           horizontal={false}
           style={styles.flatListContainer}
         />
-      </LinearGradient>
+      </View>
     </SafeAreaView>
   );
 };
-
-export default LotHome;

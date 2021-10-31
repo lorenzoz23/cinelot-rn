@@ -2,15 +2,8 @@ import { AntDesign, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import React from "react";
-import {
-  ScrollView,
-  Switch,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import Avatar from "../../Avatar";
-import { MonoText as Text } from "../../StyledText";
+import { ScrollView, Switch, TouchableOpacity, View } from "react-native";
+import { MonoText as Text } from "../../Text";
 import { sharedFilterModalStyles } from "../FilterModal/styles";
 import { sharedModalStyles } from "../styles";
 import { SettingsModalStyles } from "./styles";
