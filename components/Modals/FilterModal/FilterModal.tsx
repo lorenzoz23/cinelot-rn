@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Animated, TextInput, TouchableOpacity, View } from "react-native";
 import { sharedFilterModalStyles } from "./styles";
-import { MonoText as Text } from "../../StyledText";
+import { MonoText as Text } from "../../Text";
 import {
   AntDesign,
   FontAwesome,

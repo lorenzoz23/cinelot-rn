@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-export const NavBarStyles = StyleSheet.create({
+
+export const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -31,11 +32,6 @@ export const NavBarStyles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "space-mono",
-    color: "white",
-  },
-  text: {
-    textAlign: "center",
     fontFamily: "space-mono",
     color: "white",
   },

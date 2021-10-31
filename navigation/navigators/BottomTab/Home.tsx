@@ -1,10 +1,10 @@
 import React, { useCallback } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Alert, TouchableOpacity } from "react-native";
-import NavBar from "../../../components/NavBar";
+import { NavBar } from "../../../components/NavBar";
 import { LotHomeScreen as HomeScreen } from "../../../screens/LotHome";
 import { HomeParamList } from "../../../types/ParamLists";
-import { MonoText as Text } from "../../../components/StyledText";
+import { MonoText as Text } from "../../../components/Text";
 import { MaterialIcons } from "@expo/vector-icons";
 
 const HomeStack = createStackNavigator<HomeParamList>();

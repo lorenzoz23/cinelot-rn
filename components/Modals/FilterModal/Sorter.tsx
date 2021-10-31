@@ -2,7 +2,7 @@ import { Fontisto, Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { ScrollView, Switch, TouchableOpacity, View } from "react-native";
-import { MonoText as Text } from "../../StyledText";
+import { MonoText as Text } from "../../Text";
 import { sharedFilterModalStyles, SorterStyles } from "./styles";
 
 const sorters = [

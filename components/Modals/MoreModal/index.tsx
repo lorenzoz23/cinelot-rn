@@ -8,11 +8,11 @@ import {
   ScrollView,
 } from "react-native";
 import { MoreModalStyles } from "./styles";
-import { MonoText as Text } from "../../StyledText";
+import { MonoText as Text } from "../../Text";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Movie } from "../../../types/Movie";
 import { BlurView } from "expo-blur";
-import Avatar from "../../Avatar";
+import { Avatar } from "../../Avatar";
 import { sharedModalStyles } from "../styles";
 
 const users = [

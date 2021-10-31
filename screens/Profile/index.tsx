@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import Avatar from "../../components/Avatar";
+import { Avatar } from "../../components/Avatar";
 import { styles } from "./styles";
-import { MonoText as Text } from "../../components/StyledText";
+import { MonoText as Text } from "../../components/Text";
 import { mockPrizedPossessions } from "../../mocks/PrizedPossessions";
-import MovieCard from "../../components/MovieCard";
+import { MovieCard } from "../../components/MovieCard";
 import { Movie } from "../../types/Movie";
 import { useNavigation } from "@react-navigation/core";
 import { defaultSelectedMovie } from "../LotHome";

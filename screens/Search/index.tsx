@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { TextInput, TouchableOpacity, View } from "react-native";
-import SegControl from "../../components/SegControl";
-import { MonoText as Text } from "../../components/StyledText";
+import { SegControl } from "../../components/SegControl";
+import { MonoText as Text } from "../../components/Text";
 import { styles } from "./styles";
 
 export const SearchScreen = ({

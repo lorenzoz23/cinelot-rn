@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import { MonoText as Text } from "../../../components/StyledText";
+import { MonoText as Text } from "../../../components/Text";
 import { styles } from "../styles";
 
 export const FollowingScreen = () => {

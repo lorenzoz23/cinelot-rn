@@ -3,7 +3,7 @@ import * as React from "react";
 import { TouchableOpacity, View } from "react-native";
 import { RootStackParamList } from "../../types/ParamLists";
 import { styles } from "./styles";
-import { MonoText as Text } from "../../components/StyledText";
+import { MonoText as Text } from "../../components/Text";
 
 const NotFoundScreen = ({
   navigation,
@@ -16,7 +16,7 @@ const NotFoundScreen = ({
         style={styles.link}
         activeOpacity={0.5}
       >
-        <Text style={styles.linkText}>Go to home screen!</Text>
+        <Text style={styles.linkText}>Go to home screen</Text>
       </TouchableOpacity>
     </View>
   );

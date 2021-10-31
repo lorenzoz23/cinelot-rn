@@ -8,7 +8,7 @@ import {
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { Movie } from "../../types/Movie";
 import { styles } from "./styles";
-import { MonoText as Text } from "../../components/StyledText";
+import { MonoText as Text } from "../../components/Text";
 import { defaultSelectedMovie } from "../LotHome";
 import DeleteModal from "../../components/Modals/DeleteModal";
 import MoreModal from "../../components/Modals/MoreModal";

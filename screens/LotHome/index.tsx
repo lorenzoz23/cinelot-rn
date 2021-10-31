@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView, FlatList, View } from "react-native";
-import MovieCard from "../../components/MovieCard";
-import SegControl from "../../components/SegControl";
+import { MovieCard } from "../../components/MovieCard";
+import { SegControl } from "../../components/SegControl";
 import {
   mockLotCollection,
   mockWishlistCollection,

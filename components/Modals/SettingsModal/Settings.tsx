@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import MovieCard from "../../MovieCard";
-import { MonoText as Text } from "../../StyledText";
+import { MovieCard } from "../../MovieCard";
+import { MonoText as Text } from "../../Text";
 import { sharedFilterModalStyles } from "../FilterModal/styles";
 import { sharedModalStyles } from "../styles";
 import { SettingsModalStyles } from "./styles";

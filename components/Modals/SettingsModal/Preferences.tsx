@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { BlurView } from "expo-blur";
 import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import { MonoText as Text } from "../../StyledText";
+import { MonoText as Text } from "../../Text";
 import { sharedFilterModalStyles } from "../FilterModal/styles";
 import { sharedModalStyles } from "../styles";
 import { SettingsModalStyles } from "./styles";

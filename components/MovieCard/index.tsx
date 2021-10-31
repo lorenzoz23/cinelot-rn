@@ -8,11 +8,10 @@ interface MovieCardProps {
   showMovie: (movie: Movie) => void;
 }
 
-const MovieCard = (props: MovieCardProps) => {
-  const { data, showMovie } = props;
+export const MovieCard = ({ data, showMovie }: MovieCardProps) => {
   return (
     <View style={MovieCardStyles.container}>
-      <TouchableOpacity onPress={() => showMovie(data)}>
+      <TouchableOpacity onPress={() => showMovie(data)} activeOpacity={0.5}>
         <Image
           source={{
             uri: data.poster,
@@ -23,5 +22,3 @@ const MovieCard = (props: MovieCardProps) => {
     </View>
   );
 };
-
-export default MovieCard;
