@@ -1,17 +1,17 @@
 import { MediaTag } from "./MediaTag";
 
 export type Movie = {
+  id: number;
+  imdbId: string;
   name: string;
   year: string;
-  rating: string;
-  genre: any[];
+  genre: string[];
   runtime: string;
   plot: string;
   poster: string;
-  images: string[];
-  id: number;
-  imdbId: string;
-  starRating: number;
-  watched: boolean;
-  mediaTags: MediaTag[];
+  rating?: string;
+  images?: string[];
+  userStarRating?: number;
+  hasWatched?: boolean;
+  mediaTags?: MediaTag[];
 };

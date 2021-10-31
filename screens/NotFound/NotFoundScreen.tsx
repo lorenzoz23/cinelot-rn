@@ -1,7 +1,7 @@
 import { StackScreenProps } from "@react-navigation/stack";
 import * as React from "react";
 import { TouchableOpacity, View } from "react-native";
-import { RootStackParamList } from "../../types/types";
+import { RootStackParamList } from "../../types/ParamLists";
 import { styles } from "./styles";
 import { MonoText as Text } from "../../components/StyledText";
 
